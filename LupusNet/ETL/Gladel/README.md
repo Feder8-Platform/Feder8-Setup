@@ -12,7 +12,7 @@
    * `mkdir etl_gladel`
    * `cd etl_gladel`
 2. Download the installation script:
-    * `curl -L https://raw.githubusercontent.com/solventrix/Feder8-Setup/master/LupusNet/ETL/Gladel/runETL.sh --output runETL.sh && chmod +x runETL.sh`
+    * `curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Gladel/runETL.sh --output runETL.sh && chmod +x runETL.sh`
 3. Execute the `runETL.sh` script by running `./runETL.sh` from inside the directory where the script is located.
 4. The script will request for:
     * the path to the folder that contains the input data file
