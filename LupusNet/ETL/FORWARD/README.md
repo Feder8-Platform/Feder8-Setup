@@ -15,7 +15,7 @@
     * `curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/FORWARD/runETL.cmd --output runETL.cmd`
 3. Execute the `runETL.cmd` script by running `.\runETL.cmd` from inside the directory where the script is located.
 4. The script will request for:
-    * the path to the folder that contains the input data file
+    * the path to the folder that contains the input data files
     * the username and password to connect to the OMOP CDM database (a running Docker container named `postgres`)
 5. The script will run the ETL code and show the output of the code
 
