@@ -11,7 +11,7 @@
 2. Create a new directory for the ETL script execution, e.g.:
    * `mkdir etl_forward`
    * `cd etl_forward`
-2. Download the installation script:
+2. Download the ETL run script:
     * `curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/FORWARD/runETL.cmd --output runETL.cmd`
 3. Execute the `runETL.cmd` script by running `.\runETL.cmd` from inside the directory where the script is located.
 4. The script will request for:
