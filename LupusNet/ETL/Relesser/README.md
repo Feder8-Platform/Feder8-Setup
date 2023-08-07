@@ -5,7 +5,7 @@
 2. The user has access to the LupusNet Harbor repository containing the ETL image.
 3. The OMOP CDM database is running in a Docker container named `postgres`:
    * Check this by running `docker ps`. You should see the `postgres` container listed as running and healthy.
-4. 2 tab delimited CSV files with name 'criteria.csv' & 'visit.csv' containing the source data 
+4. The tab delimited CSV file with name 'relesser.csv' containing the source data 
 
 ## Harbor login
 1. Open a browser and log into Harbor @ https://harbor.lupusnet.org/c/oidc/login
