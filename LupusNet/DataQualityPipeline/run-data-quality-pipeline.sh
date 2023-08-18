@@ -4,7 +4,7 @@ set -ex
 REGISTRY=harbor.lupusnet.org
 REPOSITORY=distributed-analytics
 IMAGE=data-quality-pipeline
-VERSION=1.5
+VERSION=1.6
 TAG=$VERSION
 
 echo "Docker login @ $REGISTRY"
