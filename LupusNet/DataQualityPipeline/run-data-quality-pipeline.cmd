@@ -3,7 +3,7 @@
 SET REGISTRY=harbor.lupusnet.org
 SET REPOSITORY=distributed-analytics
 SET IMAGE=data-quality-pipeline
-SET VERSION=1.5
+SET VERSION=1.6
 SET TAG=%VERSION%
 SET QA_FOLDER_HOST=%CD%/qa
 
