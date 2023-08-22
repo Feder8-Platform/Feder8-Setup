@@ -19,7 +19,7 @@ echo "THERAPEUTIC_AREA=lupus" >> data-quality-pipeline.env
 echo "INDICATION=lupus" >> data-quality-pipeline.env
 echo "CDM_VERSION=5.4"  >> data-quality-pipeline.env
 echo "QA_FOLDER_HOST=$QA_FOLDER_HOST" >> data-quality-pipeline.env
-echo "SCRIPT_UUID=17b8f1e7-d352-417b-82fc-2d0a4f75cdd8" >> data-quality-pipeline.env
+echo "SCRIPT_UUID=82f80336-c3b7-4d09-b325-db8d2965fb86" >> data-quality-pipeline.env
 
 docker run \
 --rm \
