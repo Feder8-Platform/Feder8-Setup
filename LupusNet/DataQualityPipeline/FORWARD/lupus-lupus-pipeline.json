@@ -1,0 +1,23 @@
+{
+  "data-quality-scripts": [
+    {
+      "name": "achilles",
+      "results-path": "/logs"
+    },
+    {
+      "name": "analysis-table-generator-lupus-foward"
+    },
+    {
+      "name": "data-quality-dashboard",
+      "results-path": "/script/output"
+    },
+    {
+      "name": "data-profiler",
+      "results-path": "/script/data_profiler_results"
+    },
+    {
+      "name": "longitudinal-patient-data",
+      "results-path": "/script/results"
+    }
+  ]
+}
