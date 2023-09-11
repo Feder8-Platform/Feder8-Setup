@@ -5,7 +5,11 @@
 2. The user has access to the LupusNet Harbor repository containing the ETL image.
 3. The OMOP CDM database is running in a Docker container named `postgres`:
    * Check this by running `docker ps`. You should see the `postgres` container listed as running and healthy.
-4. A tab delimited CSV file with name 'aplc.csv' containing the source data 
+4. A tab delimited CSV file with name 'aplc.csv' containing the source data
+5. Run the following command to change the default port used by nginx:
+   * Windows:
+
+     `curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/APLC/custom-http-port.cmd --output custom-http-port.cmd`
 
 ## Harbor login
 1. Open a browser and log into Harbor @ https://harbor.lupusnet.org/c/oidc/login
