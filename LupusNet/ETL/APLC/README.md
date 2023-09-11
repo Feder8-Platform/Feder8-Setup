@@ -9,7 +9,9 @@
 5. Run the following command to change the default port used by nginx:
    * Windows:
 
-     ```curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/APLC/custom-http-port.cmd --output custom-http-port.cmd```
+     ```
+     curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/APLC/custom-http-port.cmd --output custom-http-port.cmd
+     ```
 
 ## Harbor login
 1. Open a browser and log into Harbor @ https://harbor.lupusnet.org/c/oidc/login
