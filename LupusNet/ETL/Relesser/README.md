@@ -35,3 +35,11 @@
 5. The script will run the ETL code and show the output of the code
 
 Please review the reports created by the script. Confirm that no patient-level information was written out before sharing them.
+
+## Install latest postgres image (Optional)
+ 1. Download the start-postgres script: 
+    * Linux/MacOS: 
+      ```
+      curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Relesser/start-postgres.sh --output start-postgres.sh  && chmod +x start-postgres.sh
+      ```
+2. Execute the 'start-postgres' script by running `./start-postgres.sh` from inside the directory where the script is located.
