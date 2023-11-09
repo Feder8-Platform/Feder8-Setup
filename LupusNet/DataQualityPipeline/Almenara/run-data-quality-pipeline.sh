@@ -21,6 +21,8 @@ echo "CDM_VERSION=5.4"  >> data-quality-pipeline.env
 echo "QA_FOLDER_HOST=$QA_FOLDER_HOST" >> data-quality-pipeline.env
 echo "SCRIPT_UUID=82f80336-c3b7-4d09-b325-db8d2965fb86" >> data-quality-pipeline.env
 
+curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/DataQualityPipeline/Almenara/lupus-lupus-pipeline.json --output lupus-lupus-pipeline.json
+
 docker run \
 --rm \
 --name data-quality-pipeline \
