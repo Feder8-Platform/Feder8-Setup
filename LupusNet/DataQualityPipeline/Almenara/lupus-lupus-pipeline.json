@@ -1,0 +1,15 @@
+{
+  "data-quality-scripts": [
+    {
+      "name": "analysis-table-generator-lupus"
+    },
+    {
+      "name": "data-quality-dashboard",
+      "results-path": "/script/output"
+    },
+    {
+      "name": "data-profiler",
+      "results-path": "/script/data_profiler_results"
+    }
+  ]
+}
