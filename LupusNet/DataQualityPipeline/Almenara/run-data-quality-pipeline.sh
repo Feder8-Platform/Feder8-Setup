@@ -26,6 +26,7 @@ docker run \
 --name data-quality-pipeline \
 --env-file data-quality-pipeline.env \
 -v /var/run/docker.sock:/var/run/docker.sock \
+-v ${PWD}/lupus-lupus-pipeline.json:/pipeline/lupus-lupus-pipeline.json \
 --network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
