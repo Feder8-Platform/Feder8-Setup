@@ -5,9 +5,6 @@ read -p "Source data folder [${PWD}/data]: " data_folder
 SOURCE_FOLDER=${data_folder:-${PWD}/data}
 read -p "Source CSV file [gladel.csv]: " csv_file
 SOURCE_CSV=${csv_file:-gladel.csv}
-read -p "DB username [lupus_admin]: " db_username
-DB_USER=${db_username:-lupus_admin}
-read -p "DB password: " DB_PASSWORD
 
 REGISTRY=harbor.lupusnet.org
 REPOSITORY=etl-gladel
