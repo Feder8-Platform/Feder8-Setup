@@ -8,6 +8,14 @@
       "test_organizations": ["TestOrg1", "TestOrg2", "TestOrg3", "TestOrg4", "TestOrg5", "TestOrg6"],
       "cdm_version": "5.3.1"
     },
+    { "name": "honeur2",
+      "light_theme_color": "#0794e0",
+      "dark_theme_color": "#002562",
+      "domain":  "honeur.org",
+      "organizations": ["AIDA","CAV","CCL","CHU Dijon","CHU Lille","CHU Montpellier","CLLEAR","EMMOS","GMV","H12O","iOMEDICO","IUCT","Janssen","OIS","Oncotyrol","RMG","Sourasky","UHL","Wurzburg","Zaragosa"],
+      "test_organizations": ["TestOrg1", "TestOrg2", "TestOrg3", "TestOrg4", "TestOrg5", "TestOrg6"],
+      "cdm_version": "5.3.1"
+    },
     { "name": "phederation",
       "light_theme_color": "#3590d5",
       "dark_theme_color": "#0741ad",
