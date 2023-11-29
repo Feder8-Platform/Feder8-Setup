@@ -1,0 +1,205 @@
+{
+  "components": [
+    { "name": "postgres",
+      "image": "postgres",
+      "tag":  "13-omopcdm-{cdm_version}-webapi-2.9.0-2.0.9",
+      "public": false
+    },
+    { "name": "config-server",
+      "image": "config-server",
+      "tag":  "2.0.2",
+      "public": false
+    },
+    { "name": "update-config",
+      "image": "config-server",
+      "tag":  "update-configuration-2.0.1",
+      "public": false
+    },
+    { "name": "local-portal",
+      "image": "local-portal",
+      "tag":  "2.0.18",
+      "public": false
+    },
+    { "name": "user-mgmt",
+      "image": "user-mgmt",
+      "tag":  "2.0.5",
+      "public": false
+    },
+    { "name": "atlas",
+      "image": "atlas",
+      "tag":  "2.9.0-2.0.1",
+      "public": false
+    },
+    { "name": "webapi",
+      "image": "webapi",
+      "tag":  "2.9.0-2.0.3",
+      "public": false
+    },
+    { "name": "zeppelin",
+      "image": "zeppelin",
+      "tag":  "0.8.2-2.0.6",
+      "public": false
+    },
+    { "name": "distributed-analytics-r-server",
+      "image": "distributed-analytics",
+      "tag":  "r-server-2.0.5",
+      "public": false
+    },
+    { "name": "distributed-analytics-remote",
+      "image": "distributed-analytics",
+      "tag":  "remote-2.0.7",
+      "public": false
+    },
+    { "name": "feder8-studio",
+      "image": "feder8-studio",
+      "tag":  "2.0.15",
+      "public": false
+    },
+    { "name": "vs-code-server",
+      "image": "vs-code-server",
+      "tag":  "4.4.0",
+      "public": false
+    },
+    { "name": "r-studio-server",
+      "image": "r-studio-server",
+      "tag":  "4.2.0",
+      "public": false
+    },
+    { "name": "shiny-server",
+      "image": "shiny-server",
+      "tag":  "4.2.0",
+      "public": false
+    },
+    { "name": "disease-explorer",
+      "image": "disease-explorer",
+      "tag":  "latest",
+      "restricted": true,
+      "public": false
+    },
+    { "name": "task-manager",
+      "image": "task-manager",
+      "tag":  "2.0.6",
+      "public": false
+    },
+    { "name": "nginx",
+      "image": "nginx",
+      "tag":  "2.0.16",
+      "public": false
+    },
+    { "name": "vocabulary-update",
+      "image": "postgres",
+      "tag":  "pipeline-vocabulary-update-2.0.2",
+      "public": false
+    },
+    { "name": "backup",
+      "image": "backup",
+      "tag":  "2.0.1",
+      "public": false
+    },
+    { "name": "restore",
+      "image": "restore",
+      "tag":  "1.0.0",
+      "public": false
+    },
+    { "name": "fix-default-permissions",
+      "image": "postgres",
+      "tag":  "fix-default-permissions-2.0.1",
+      "public": false
+    },
+    { "name": "add-postgres-user",
+      "image": "postgres-add-user",
+      "tag":  "2.0.0",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-initialize-schema",
+      "image": "postgres-omopcdm-initialize-schema",
+      "tag":  "{cdm_version}-2.0.2",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-add-base-primary-keys",
+      "image": "postgres-omopcdm-add-base-primary-keys",
+      "tag":  "{cdm_version}-2.0.1",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-add-base-indexes",
+      "image": "postgres-omopcdm-add-base-indexes",
+      "tag":  "{cdm_version}-2.0.1",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-delete-base-indexes",
+      "image": "postgres",
+      "tag":  "omopcdm-delete-base-indexes-2.0.0",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-delete-base-indexes-5_4",
+      "image": "postgres-omopcdm-delete-base-indexes",
+      "tag":  "5.4-2.0.1",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-add-constraints",
+      "image": "postgres",
+      "tag":  "omopcdm-add-constraints-2.0.0",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-add-constraints-5_4",
+      "image": "postgres-omopcdm-add-constraints",
+      "tag":  "5.4-2.0.1",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-delete-constraints",
+      "image": "postgres",
+      "tag":  "omopcdm-delete-constraints-2.0.0",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-delete-constraints-5_4",
+      "image": "postgres-omopcdm-delete-constraints",
+      "tag":  "5.4-2.0.1",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-update-custom-concepts",
+      "image": "postgres-omopcdm-update-custom-concepts",
+      "tag":  "latest",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-update-vocabulary",
+      "image": "postgres",
+      "tag":  "omopcdm-update-vocabulary-2.0.0",
+      "public": false
+    },
+    { "name": "results-rebuild-concept-hierarchy",
+      "image": "postgres",
+      "tag":  "results-rebuild-concept-hierarchy-2.0.2",
+      "public": false
+    },
+    { "name": "postgres-results-initialize-schema",
+      "image": "postgres-results-initialize-schema",
+      "tag":  "2.0.3",
+      "public": false
+    },
+    { "name": "postgres-webapi-add-source",
+      "image": "postgres-webapi-add-source",
+      "tag":  "2.0.1",
+      "public": false
+    },
+    { "name": "alpine",
+      "image": "alpine",
+      "tag":  "3.15.0",
+      "public": true
+    },
+    { "name": "postgres-9_6",
+      "image": "postgres",
+      "tag":  "9.6",
+      "public": true
+    },
+    { "name": "postgres-13",
+      "image": "postgres",
+      "tag":  "13",
+      "public": true
+    },
+    { "name": "postgres-9_6_13_upgrade",
+      "image": "tianon/postgres-upgrade",
+      "tag":  "9.6-to-13",
+      "public": true
+    }
+  ]
+}
