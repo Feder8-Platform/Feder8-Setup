@@ -1,0 +1,44 @@
+{
+  "therapeutic_areas": [
+    { "name": "honeur",
+      "light_theme_color": "#0794e0",
+      "dark_theme_color": "#002562",
+      "domain":  "honeur.org",
+      "organizations": ["AIDA","CAV","CCL","CHU Dijon","CHU Lille","CHU Montpellier","CLLEAR","EMMOS","GMV","H12O","iOMEDICO","IUCT","Janssen","OIS","Oncotyrol","RMG","Sourasky","UHL","Wurzburg","Zaragosa"],
+      "test_organizations": ["TestOrg1", "TestOrg2", "TestOrg3", "TestOrg4", "TestOrg5", "TestOrg6"],
+      "cdm_version": "5.3.1"
+    },
+    { "name": "phederation",
+      "light_theme_color": "#3590d5",
+      "dark_theme_color": "#0741ad",
+      "domain":  "phederation.org",
+      "organizations": ["Actelion","Janssen"],
+      "test_organizations": ["PHederationTestOrg1", "PHederationTestOrg2", "PHederationTestOrg3", "PHederationTestOrg4", "PHederationTestOrg5", "PHederationTestOrg6"],
+      "cdm_version": "5.3.1"
+    },
+    { "name": "esfurn",
+      "light_theme_color": "#668772",
+      "dark_theme_color": "#44594c",
+      "domain":  "esfurn.org",
+      "organizations": ["Birmingham", "CNIO", "Erasmus","Erlangen", "Janssen"],
+      "test_organizations": ["EsfurnTestOrg1", "EsfurnTestOrg2", "EsfurnTestOrg3", "EsfurnTestOrg4", "EsfurnTestOrg5", "EsfurnTestOrg6"], 
+      "cdm_version": "5.3.1"
+    },
+    { "name": "athena",
+      "light_theme_color": "#0794e0",
+      "dark_theme_color": "#002562",
+      "domain":  "athenafederation.org",
+      "organizations": ["AZ Groeninge", "CHU Liege", "edenceHealth", "Illumina", "Imec", "Janssen", "KU Leuven", "OLVZ Aalst", "UGent", "UZ Leuven MM", "UZ Leuven UC", "ZOL"],
+      "test_organizations": ["imec-1", "imec-2", "imec-3", "AthenaTestOrg1", "AthenaTestOrg2", "AthenaTestOrg3", "AthenaTestOrg4", "AthenaTestOrg5", "AthenaTestOrg6"],
+      "cdm_version": "5.3.1"
+    },
+    { "name": "lupus",
+      "light_theme_color": "#0794e0",
+      "dark_theme_color": "#002562",
+      "domain":  "lupusnet.org",
+      "organizations": ["Forward", "Gladel", "Janssen"],
+      "test_organizations": ["LupusnetTestOrg1", "LupusnetTestOrg2", "LupusnetTestOrg3", "LupusnetTestOrg4", "LupusnetTestOrg5", "LupusnetTestOrg6"],
+      "cdm_version": "5.4"
+    }
+  ]
+}
