@@ -1,5 +1,10 @@
 {
   "components": [
+    { "name": "install-script",
+      "image": "install-script",
+      "tag":  "2.1.0",
+      "public": false
+    },
     { "name": "postgres",
       "image": "postgres",
       "tag":  "13-omopcdm-{cdm_version}-webapi-2.9.0-2.0.9",
