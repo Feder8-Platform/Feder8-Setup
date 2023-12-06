@@ -2,7 +2,7 @@
   "components": [
     { "name": "install-script",
       "image": "install-script",
-      "tag":  "2.1.0",
+      "tag":  "2.2.0",
       "public": false
     },
     { "name": "postgres",
