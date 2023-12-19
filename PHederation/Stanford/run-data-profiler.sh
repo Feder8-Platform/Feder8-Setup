@@ -7,7 +7,7 @@ IMAGE=data-profiler
 VERSION=1.0.17
 TAG=$VERSION
 
-#docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
+docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
 touch data-profiler.env
 echo "THERAPEUTIC_AREA=PHEDERATION" >> data-profiler.env
