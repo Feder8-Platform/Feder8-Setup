@@ -1,34 +1,45 @@
 #!/usr/bin/env bash
-set -e
+set -ex
 
-read -p "Source data folder [${PWD}/data]: " data_folder
-SOURCE_FOLDER=${data_folder:-${PWD}/data}
-read -p "DB username [feder8_admin]: " db_username
-DB_USER=${db_username:-feder8_admin}
-read -p "DB password: " DB_PASSWORD
+REGISTRY=harbor.honeur.org
+REPOSITORY=library
+IMAGE=etl-runner
+VERSION=1.1.1
+TAG=$VERSION
 
-REGISTRY=harbor.lupusnet.org
-REPOSITORY=etl-relesser
+LOG_FOLDER_HOST=${PWD}/log
+DATA_FOLDER_HOST=${PWD}/data
+QA_FOLDER_HOST=${PWD}/qa
 
-# Log into Harbor
-echo "Login into Harbor (please enter your email address and Harbor CLI secret if needed)"
-docker login $REGISTRY
-
-# Run ETL
-echo "Run ETL. Output will be written to: "
-echo ${PWD}/qa
-IMAGE=etl
-TAG=latest
-
+echo "Pull ETL runner image"
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
-docker run --rm --network feder8-net \
---env DB_USER=$DB_USER --env DB_PASSWORD=$DB_PASSWORD \
--v $SOURCE_FOLDER:/script/etl/data \
--v ${PWD}/qa:/script/etl/relesser/reports \
+#echo "Download ETL questions"
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Relesser/questions.json --output questions.json
+
+touch etl-runner.env
+echo "THERAPEUTIC_AREA=lupus" >> etl-runner.env
+echo "REGISTRY=harbor.lupusnet.org" >> etl-runner.env
+echo "LOG_LEVEL=INFO" >> etl-runner.env
+echo "LOG_FOLDER_HOST=$LOG_FOLDER_HOST" >> etl-runner.env
+echo "LOG_FOLDER=/script/etl/relesser/log" >> etl-runner.env
+echo "ETL_IMAGE_NAME=etl-relesser/etl" >> etl-runner.env
+echo "ETL_IMAGE_TAG=latest" >> etl-runner.env
+echo "DATA_FOLDER_HOST=$DATA_FOLDER_HOST" >> etl-runner.env
+echo "DATA_FOLDER=/script/etl/data" >> etl-runner.env
+echo "QA_FOLDER_HOST=$QA_FOLDER_HOST" >> etl-runner.env
+echo "RUN_DQD=false" >> etl-runner.env
+
+echo "Run ETL"
+docker run \
+-it \
+--rm \
+--name etl-runner \
+--env-file etl-runner.env \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v ${PWD}/questions.json:/script/questions.json \
+--network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
-echo "End of script"
-echo "Please inspect and share the output under the following folder: "
-echo ${PWD}/qa
-
+echo "End of ETL run"
+rm -rf etl-runner.env
