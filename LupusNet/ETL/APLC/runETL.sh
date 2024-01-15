@@ -22,7 +22,7 @@ TAG=latest
 
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
-docker run --rm --network feder8-net \
+docker run --rm -it --network feder8-net \
 --env DB_USER=$DB_USER --env DB_PASSWORD=$DB_PASSWORD \
 -v $SOURCE_FOLDER:/script/etl/data \
 -v ${PWD}/qa:/script/etl/aplc/reports \
