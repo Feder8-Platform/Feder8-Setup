@@ -15,7 +15,7 @@ echo "Pull ETL runner image"
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
 #echo "Download ETL questions"
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Forward/questions.json --output questions.json
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/FORWARD/questions.json --output questions.json
 
 touch etl-runner.env
 echo "THERAPEUTIC_AREA=lupus" >> etl-runner.env
