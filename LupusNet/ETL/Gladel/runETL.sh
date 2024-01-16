@@ -38,7 +38,7 @@ rm -rf gladel-csv-splitter.env
 REGISTRY=harbor.honeur.org
 REPOSITORY=library
 IMAGE=etl-runner
-VERSION=1.1.1
+VERSION=1.1.2
 TAG=$VERSION
 
 LOG_FOLDER_HOST=${PWD}/log
