@@ -28,6 +28,9 @@ docker run --rm --network feder8-net \
 -v ${PWD}/qa:/script/etl/almenara/reports \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
+echo "Set permissions on new DB schema's"
+docker exec -it postgres psql -U postgres -d OHDSI -c "REASSIGN OWNED BY feder8_admin TO ohdsi_admin;REASSIGN OWNED BY ohdsi_app_user TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_almenara_final TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_almenara_final TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_almenara_src TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_almenara_src TO ohdsi_app;"
+
 echo "End of script"
 echo "Please inspect and share the output under the following folder: "
 echo ${PWD}/qa
