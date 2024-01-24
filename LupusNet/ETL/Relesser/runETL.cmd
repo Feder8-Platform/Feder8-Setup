@@ -26,3 +26,8 @@ docker run --rm --network feder8-net --env DB_USER=%db_username% --env DB_PASSWO
 echo "End of script"
 echo "Please inspect and share the output under the following folder: "
 echo "%reports_folder%"
+
+
+echo "Set permissions on new database schema's"
+docker exec -it postgres psql -U postgres -d OHDSI -c "REASSIGN OWNED BY feder8_admin TO ohdsi_admin;REASSIGN OWNED BY ohdsi_app_user TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_relesser_final TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_relesser_final TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_relesser_final TO ohdsi_admin;GRANT ALL ON ALL TABLES IN SCHEMA lupus_relesser_final TO ohdsi_admin;"
+
