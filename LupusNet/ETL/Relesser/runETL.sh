@@ -28,6 +28,7 @@ echo "ETL_IMAGE_TAG=latest" >> etl-runner.env
 echo "DATA_FOLDER_HOST=$DATA_FOLDER_HOST" >> etl-runner.env
 echo "DATA_FOLDER=/script/etl/data" >> etl-runner.env
 echo "QA_FOLDER_HOST=$QA_FOLDER_HOST" >> etl-runner.env
+echo "QA_FOLDER_ETL=/script/etl/relesser/reports" >> etl-runner.env
 echo "RUN_DQD=false" >> etl-runner.env
 
 echo "Run ETL"
