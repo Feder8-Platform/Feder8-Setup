@@ -46,5 +46,4 @@ echo "End of ETL run"
 rm -rf etl-runner.env
 
 echo "Set permissions on new database schema's"
-docker exec -it postgres psql -U postgres -d OHDSI -c "REASSIGN OWNED BY feder8_admin TO ohdsi_admin;REASSIGN OWNED BY ohdsi_app_user TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_relesser_final TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_relesser_final TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_relesser_final TO ohdsi_admin;GRANT ALL ON ALL TABLES IN SCHEMA lupus_relesser_final TO ohdsi_admin;"
-
+docker exec -it postgres psql -U postgres -d OHDSI -c "REASSIGN OWNED BY feder8_admin TO ohdsi_admin;GRANT USAGE ON SCHEMA lupus_relesser_final TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_relesser_final TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_relesser_cdm TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_relesser_cdm TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_relesser_raw TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_relesser_raw TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_relesser_etl TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_relesser_etl TO ohdsi_app;"
