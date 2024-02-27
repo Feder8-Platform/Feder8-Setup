@@ -37,12 +37,7 @@
 3. Execute the 'runETL' script by running `.\runETL.cmd` (Windows) or `./runETL.sh` (Linux/MacOS) from inside the directory where the script is located.
 4. The script will request for:
     * the path to the folder that contains the input data file
-    * the username and password to connect to the OMOP CDM database (a running Docker container named `postgres`)
+    * the date when the source data was exported
 5. The script will run the ETL code and show the output of the code
-6. Execute the DB grant script:
-   * Windows:
-     ```
-     curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/APLC/add-db-schema-grants.cmd --output add-db-schema-grants.cmd
-     ```
 
 Please review the reports created by the script. Confirm that no patient-level information was written out before sharing them.
