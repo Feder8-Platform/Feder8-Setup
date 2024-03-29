@@ -7,7 +7,7 @@ SET VERSION=1.6
 SET TAG=%VERSION%
 SET QA_FOLDER_HOST=%CD%/qa
 
-echo "Docker login @ harbor.honeur.org"
+echo "Docker login @ %REGISTRY%"
 docker login %REGISTRY%
 
 docker pull %REGISTRY%/%REPOSITORY%/%IMAGE%:%TAG%
