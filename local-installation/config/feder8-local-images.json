@@ -52,7 +52,7 @@
     },
     { "name": "feder8-studio",
       "image": "feder8-studio",
-      "tag":  "2.1.0",
+      "tag":  "2.1.1",
       "public": false
     },
     { "name": "vs-code-server",
@@ -70,8 +70,8 @@
       "tag":  "4.2.0",
       "public": false
     },
-    { "name": "disease-explorer",
-      "image": "disease-explorer",
+    { "name": "ditran",
+      "image": "ditran",
       "tag":  "latest",
       "restricted": true,
       "public": false
