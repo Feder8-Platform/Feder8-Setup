@@ -147,11 +147,11 @@
       "public": false
     },
     { "name": "postgres-omopcdm-delete-constraints",
-      "image": "postgres",
-      "tag":  "omopcdm-delete-constraints-2.0.0",
+      "image": "postgres-omopcdm-delete-constraints",
+      "tag":  "5.3.1-2.0.2",
       "public": false
     },
-    { "name": "postgres-omopcdm-delete-constraints-5_4",
+    { "name": "postgres-omopcdm-delete-constraints",
       "image": "postgres-omopcdm-delete-constraints",
       "tag":  "5.4-2.0.2",
       "public": false
