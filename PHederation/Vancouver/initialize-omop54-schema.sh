@@ -21,6 +21,6 @@ docker run \
 -v shared:/var/lib/shared \
 --env-file omopcdm-initialize-schema.env \
 --network feder8-net \
-harbor.honeur.org/honeur/postgres-omopcdm-initialize-schema:$TAG
+harbor.phederation.org/phederation/postgres-omopcdm-initialize-schema:$TAG
 
 rm -rf omopcdm-initialize-schema.env
