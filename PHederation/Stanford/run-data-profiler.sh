@@ -4,7 +4,7 @@ set -e
 REGISTRY=harbor.phederation.org
 REPOSITORY=distributed-analytics
 IMAGE=data-profiler
-VERSION=1.0.17
+VERSION=latest
 TAG=$VERSION
 
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
