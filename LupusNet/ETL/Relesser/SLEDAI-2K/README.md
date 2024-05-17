@@ -1,4 +1,4 @@
-# # How to add SLEDAI-2K measurements after running the ETL for Relesser
+# How to add SLEDAI-2K measurements after running the ETL for Relesser
 
 ## Prerequisites
 1. Docker is installed and running.
