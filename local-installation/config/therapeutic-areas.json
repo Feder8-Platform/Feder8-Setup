@@ -12,7 +12,7 @@
       "light_theme_color": "#3590d5",
       "dark_theme_color": "#0741ad",
       "domain":  "phederation.org",
-      "organizations": ["Actelion","Janssen"],
+      "organizations": ["Actelion","Janssen","Stanford University","Vancouver"],
       "test_organizations": ["PHederationTestOrg1", "PHederationTestOrg2", "PHederationTestOrg3", "PHederationTestOrg4", "PHederationTestOrg5", "PHederationTestOrg6"],
       "cdm_version": "5.3.1"
     },
@@ -36,7 +36,7 @@
       "light_theme_color": "#0794e0",
       "dark_theme_color": "#002562",
       "domain":  "lupusnet.org",
-      "organizations": ["Forward", "Gladel", "Janssen"],
+      "organizations": ["Almenara","APLC","Forward", "Gladel", "Janssen","RELESSER"],
       "test_organizations": ["LupusnetTestOrg1", "LupusnetTestOrg2", "LupusnetTestOrg3", "LupusnetTestOrg4", "LupusnetTestOrg5", "LupusnetTestOrg6"],
       "cdm_version": "5.4"
     }
