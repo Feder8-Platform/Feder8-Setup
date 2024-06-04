@@ -4,23 +4,21 @@ set -ex
 REGISTRY=harbor.honeur.org
 REPOSITORY=distributed-analytics
 IMAGE=data-quality-pipeline
-VERSION=1.4.0
+VERSION=1.8
 TAG=$VERSION
+
+echo "Docker login @ $REGISTRY"
+docker login $REGISTRY
+docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
 QA_FOLDER_HOST=${PWD}/qa
 
 touch data-quality-pipeline.env
-#echo "DB_ANALYSIS_TABLE_SCHEMA=public" >> data-quality-pipeline.env
-#echo "DB_ANALYSIS_TABLE_NAME=analysis_table" >> data-quality-pipeline.env
-echo "THERAPEUTIC_AREA=honeur" >> data-quality-pipeline.env
-echo "QA_FOLDER_HOST=$QA_FOLDER_HOST" >> data-quality-pipeline.env
 echo "REGISTRY=$REGISTRY" >> data-quality-pipeline.env
-echo "SCRIPT_UUID=9719aeb1-84c4-49c5-a2a1-c6ea3af00305" >> data-quality-pipeline.env
-
-echo "Docker login @ $REGISTRY"
-docker login $REGISTRY
-
-docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
+echo "THERAPEUTIC_AREA=honeur" >> data-quality-pipeline.env
+echo "INDICATION=mm" >> data-quality-pipeline.env
+echo "QA_FOLDER_HOST=$QA_FOLDER_HOST" >> data-quality-pipeline.env
+echo "SCRIPT_UUID=5ebd99bd-4a1e-4d3e-93f0-706637951091" >> data-quality-pipeline.env
 
 docker run \
 --rm \
