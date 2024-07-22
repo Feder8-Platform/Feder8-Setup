@@ -17,7 +17,7 @@
     },
     { "name": "local-portal",
       "image": "local-portal",
-      "tag":  "2.1.0",
+      "tag":  "2.1.1",
       "public": false
     },
     { "name": "user-mgmt",
@@ -81,9 +81,19 @@
       "tag":  "2.1.0",
       "public": false
     },
+    { "name": "dbeaver",
+      "image": "cloudbeaver",
+      "tag":  "24.1.2",
+      "public": false
+    },
+    { "name": "oauth2-proxy",
+      "image": "oauth2-proxy",
+      "tag":  "7.6.0",
+      "public": false
+    },
     { "name": "nginx",
       "image": "nginx",
-      "tag":  "2.1.0",
+      "tag":  "2.1.1",
       "public": false
     },
     { "name": "vocabulary-update",
