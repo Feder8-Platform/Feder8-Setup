@@ -10,4 +10,4 @@ docker login %REGISTRY%
 
 docker pull %REGISTRY%/%REPOSITORY%/%IMAGE%:%TAG%
 
-docker run --rm --env INPUT_FOLDER=/script/input --env INPUT_FILE=/script/input/aplc.csv --env DELIMITER=, -v %CD%/data:/script/input %REGISTRY%/%REPOSITORY%/%IMAGE%:%TAG%
+docker run --rm --env INPUT_FOLDER=/script/input --env INPUT_FILE=/script/input/aplc.csv -v %CD%/data:/script/input %REGISTRY%/%REPOSITORY%/%IMAGE%:%TAG%
