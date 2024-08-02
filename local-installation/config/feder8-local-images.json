@@ -142,13 +142,8 @@
       "public": false
     },
     { "name": "postgres-omopcdm-delete-base-indexes",
-      "image": "postgres",
-      "tag":  "omopcdm-delete-base-indexes-2.0.0",
-      "public": false
-    },
-    { "name": "postgres-omopcdm-delete-base-indexes-5_4",
       "image": "postgres-omopcdm-delete-base-indexes",
-      "tag":  "5.4-2.0.1",
+      "tag":  "2.0.2",
       "public": false
     },
     { "name": "postgres-omopcdm-add-constraints",
