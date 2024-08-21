@@ -4,8 +4,9 @@ set -e
 cr=$(echo $'\n.')
 cr=${cr%.}
 
-VERSION=2.0.2
-TAG=pipeline-vocabulary-update-$VERSION
+VERSION=2.0.3
+IMAGE=pipeline-vocabulary-update
+TAG=$VERSION
 
 read -p 'Enter the Therapeutic Area of choice. Enter honeur/phederation/esfurn [honeur]: ' FEDER8_THERAPEUTIC_AREA
 while [[ "$FEDER8_THERAPEUTIC_AREA" != "honeur" && "$FEDER8_THERAPEUTIC_AREA" != "phederation" && "$FEDER8_THERAPEUTIC_AREA" != "esfurn" && "$FEDER8_THERAPEUTIC_AREA" != "" ]]; do
@@ -35,6 +36,11 @@ while [[ "$FEDER8_CLI_SECRET" == "" ]]; do
     echo "CLI Secret can not be empty"
     read -p "Enter the CLI Secret: " FEDER8_CLI_SECRET
 done
+read -p "Enter the OMOP CDM VERSION [5.3.1, 5.4]: " CDM_VERSION
+while [[ "$CDM_VERSION" != "5.3.1" && "$CDM_VERSION" != "5.4" ]]; do
+    echo "OMOP CDM VERSION cannot be empty or invalid."
+    read -p "Enter the OMOP CDM VERSION [v5.3.1, v5.4]: " CDM_VERSION
+done
 
 touch pipeline-vocabulary-update.env
 
@@ -43,12 +49,13 @@ echo "THERAPEUTIC_AREA=$FEDER8_THERAPEUTIC_AREA" >> pipeline-vocabulary-update.e
 echo "THERAPEUTIC_AREA_URL=$FEDER8_THERAPEUTIC_AREA_URL" >> pipeline-vocabulary-update.env
 echo "DOCKER_USERNAME=$FEDER8_EMAIL_ADDRESS" >> pipeline-vocabulary-update.env
 echo "DOCKER_PASSWORD=$FEDER8_CLI_SECRET" >> pipeline-vocabulary-update.env
+echo "CDM_VERSION=$CDM_VERSION" >> pipeline-vocabulary-update.env
 
-echo "Pull $FEDER8_THERAPEUTIC_AREA/postgres:$TAG from https://$FEDER8_THERAPEUTIC_AREA_URL. This could take a while if not present on machine"
+echo "Pull $FEDER8_THERAPEUTIC_AREA/$IMAGE:$TAG from https://$FEDER8_THERAPEUTIC_AREA_URL. This could take a while if not present on machine"
 echo "$FEDER8_CLI_SECRET" | docker login https://$FEDER8_THERAPEUTIC_AREA_URL --username $FEDER8_EMAIL_ADDRESS --password-stdin
-docker pull $FEDER8_THERAPEUTIC_AREA_URL/$FEDER8_THERAPEUTIC_AREA/postgres:$TAG
+docker pull $FEDER8_THERAPEUTIC_AREA_URL/$FEDER8_THERAPEUTIC_AREA/$IMAGE:$TAG
 
-echo "Run $FEDER8_THERAPEUTIC_AREA/postgres:$TAG container. This could take a while..."
+echo "Run $FEDER8_THERAPEUTIC_AREA/$IMAGE:$TAG container. This could take a while..."
 docker run \
 --rm \
 --name pipeline-vocabulary-update \
@@ -56,7 +63,7 @@ docker run \
 -v /var/run/docker.sock:/var/run/docker.sock \
 --env-file pipeline-vocabulary-update.env \
 --network feder8-net \
-$FEDER8_THERAPEUTIC_AREA_URL/$FEDER8_THERAPEUTIC_AREA/postgres:$TAG
+$FEDER8_THERAPEUTIC_AREA_URL/$FEDER8_THERAPEUTIC_AREA/$IMAGE:$TAG
 
 echo "Clean up helper files"
 rm -rf pipeline-vocabulary-update.env
