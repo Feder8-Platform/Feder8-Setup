@@ -172,8 +172,8 @@
       "public": false
     },
     { "name": "postgres-omopcdm-update-vocabulary",
-      "image": "postgres",
-      "tag":  "omopcdm-update-vocabulary-2.0.0",
+      "image": "postgres-omopcdm-update-vocabulary",
+      "tag":  "feb-2024",
       "public": false
     },
     { "name": "results-rebuild-concept-hierarchy",
