@@ -177,8 +177,8 @@
       "public": false
     },
     { "name": "postgres-omopcdm-add-constraints",
-      "image": "postgres",
-      "tag":  "omopcdm-add-constraints-2.0.0",
+      "image": "postgres-omopcdm-add-constraints",
+      "tag":  "2.0.3",
       "public": false
     },
     { "name": "postgres-omopcdm-add-constraints-5_4",
