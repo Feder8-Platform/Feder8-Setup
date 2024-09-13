@@ -131,6 +131,36 @@
       "tag":  "{cdm_version}-2.0.2",
       "public": false
     },
+    { "name": "postgres-add-missing-concepts-ohdsi-vocab",
+      "image": "postgres-add-missing-concepts-ohdsi-vocab",
+      "tag":  "1.0",
+      "public": false
+    },
+    { "name": "postgres-delete-primary-keys",
+      "image": "postgres-delete-primary-keys",
+      "tag":  "1.0",
+      "public": false
+    },
+    { "name": "postgres-delete-foreign-keys",
+      "image": "postgres-delete-foreign-keys",
+      "tag":  "1.0",
+      "public": false
+    },
+    { "name": "postgres-delete-indexes",
+      "image": "postgres-delete-indexes",
+      "tag":  "1.0",
+      "public": false
+    },
+    { "name": "postgres-add-primary-keys",
+      "image": "postgres-add-primary-keys",
+      "tag":  "1.0",
+      "public": false
+    },
+    { "name": "postgres-add-indexes",
+      "image": "postgres-add-indexes",
+      "tag":  "1.0",
+      "public": false
+    },
     { "name": "postgres-omopcdm-add-base-primary-keys",
       "image": "postgres-omopcdm-add-base-primary-keys",
       "tag":  "{cdm_version}-2.0.1",
@@ -147,8 +177,8 @@
       "public": false
     },
     { "name": "postgres-omopcdm-add-constraints",
-      "image": "postgres",
-      "tag":  "omopcdm-add-constraints-2.0.0",
+      "image": "postgres-omopcdm-add-constraints",
+      "tag":  "2.0.3",
       "public": false
     },
     { "name": "postgres-omopcdm-add-constraints-5_4",
@@ -172,8 +202,8 @@
       "public": false
     },
     { "name": "postgres-omopcdm-update-vocabulary",
-      "image": "postgres",
-      "tag":  "omopcdm-update-vocabulary-2.0.0",
+      "image": "postgres-omopcdm-update-vocabulary",
+      "tag":  "aug-2024",
       "public": false
     },
     { "name": "results-rebuild-concept-hierarchy",
