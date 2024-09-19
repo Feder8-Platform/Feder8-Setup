@@ -52,17 +52,17 @@
     },
     { "name": "feder8-studio",
       "image": "feder8-studio",
-      "tag":  "2.1.1",
+      "tag":  "2.1.2",
       "public": false
     },
     { "name": "vs-code-server",
       "image": "vs-code-server",
-      "tag":  "4.4.0",
+      "tag":  "4.91.1",
       "public": false
     },
     { "name": "r-studio-server",
       "image": "r-studio-server",
-      "tag":  "4.2.0",
+      "tag":  "4.4.1",
       "public": false
     },
     { "name": "shiny-server",
