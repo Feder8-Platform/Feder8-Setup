@@ -161,6 +161,11 @@
       "tag":  "1.0",
       "public": false
     },
+    { "name": "postgres-add-base-indexes",
+      "image": "postgres-omopcdm-add-base-indexes",
+      "tag":  "2.0.2",
+      "public": false
+    },
     { "name": "postgres-omopcdm-add-base-primary-keys",
       "image": "postgres-omopcdm-add-base-primary-keys",
       "tag":  "{cdm_version}-2.0.1",
@@ -179,6 +184,11 @@
     { "name": "postgres-omopcdm-add-constraints",
       "image": "postgres-omopcdm-add-constraints",
       "tag":  "2.0.3",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-add-base-constraints",
+      "image": "postgres-omopcdm-add-base-constraints",
+      "tag":  "1.0",
       "public": false
     },
     { "name": "postgres-omopcdm-add-constraints-5_4",
