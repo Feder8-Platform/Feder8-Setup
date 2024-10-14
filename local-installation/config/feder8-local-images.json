@@ -213,7 +213,7 @@
     },
     { "name": "postgres-omopcdm-update-vocabulary",
       "image": "postgres-omopcdm-update-vocabulary",
-      "tag":  "aug-2024",
+      "tag":  "feb-2024",
       "public": false
     },
     { "name": "results-rebuild-concept-hierarchy",
