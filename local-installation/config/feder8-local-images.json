@@ -168,12 +168,7 @@
     },
     { "name": "postgres-omopcdm-add-base-primary-keys",
       "image": "postgres-omopcdm-add-base-primary-keys",
-      "tag":  "{cdm_version}-2.0.1",
-      "public": false
-    },
-    { "name": "postgres-omopcdm-add-base-indexes",
-      "image": "postgres-omopcdm-add-base-indexes",
-      "tag":  "{cdm_version}-2.0.1",
+      "tag":  "2.0.3",
       "public": false
     },
     { "name": "postgres-omopcdm-delete-base-indexes",
