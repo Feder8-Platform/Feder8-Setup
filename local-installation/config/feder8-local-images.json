@@ -96,11 +96,6 @@
       "tag":  "2.1.1",
       "public": false
     },
-    { "name": "vocabulary-update",
-      "image": "postgres",
-      "tag":  "pipeline-vocabulary-update-2.0.2",
-      "public": false
-    },
     { "name": "backup",
       "image": "backup",
       "tag":  "2.0.1",
@@ -113,7 +108,7 @@
     },
     { "name": "postgres-fix-default-permissions",
       "image": "postgres-fix-default-permissions",
-      "tag":  "2.0.2",
+      "tag":  "2.0.3",
       "public": false
     },
     { "name": "postgres-change-ownership",
@@ -128,7 +123,7 @@
     },
     { "name": "postgres-omopcdm-initialize-schema",
       "image": "postgres-omopcdm-initialize-schema",
-      "tag":  "{cdm_version}-2.0.2",
+      "tag":  "2.0.3",
       "public": false
     },
     { "name": "postgres-add-missing-concepts-ohdsi-vocab",
@@ -161,14 +156,14 @@
       "tag":  "1.0",
       "public": false
     },
-    { "name": "postgres-add-base-indexes",
-      "image": "postgres-omopcdm-add-base-indexes",
-      "tag":  "2.0.2",
-      "public": false
-    },
     { "name": "postgres-omopcdm-add-base-primary-keys",
       "image": "postgres-omopcdm-add-base-primary-keys",
       "tag":  "2.0.3",
+      "public": false
+    },
+    { "name": "postgres-omopcdm-add-base-indexes",
+      "image": "postgres-omopcdm-add-base-indexes",
+      "tag":  "2.0.2",
       "public": false
     },
     { "name": "postgres-omopcdm-delete-base-indexes",
@@ -186,19 +181,9 @@
       "tag":  "1.0",
       "public": false
     },
-    { "name": "postgres-omopcdm-add-constraints-5_4",
-      "image": "postgres-omopcdm-add-constraints",
-      "tag":  "5.4-2.0.1",
-      "public": false
-    },
-    { "name": "postgres-omopcdm-delete-constraints-5_3_1",
+    { "name": "postgres-omopcdm-delete-constraints",
       "image": "postgres-omopcdm-delete-constraints",
-      "tag":  "5.3.1-2.0.2",
-      "public": false
-    },
-    { "name": "postgres-omopcdm-delete-constraints-5_4",
-      "image": "postgres-omopcdm-delete-constraints",
-      "tag":  "5.4-2.0.2",
+      "tag":  "{cdm_version}-2.0.2",
       "public": false
     },
     { "name": "postgres-omopcdm-update-custom-concepts",
@@ -212,18 +197,18 @@
       "public": false
     },
     { "name": "results-rebuild-concept-hierarchy",
-      "image": "postgres",
-      "tag":  "results-rebuild-concept-hierarchy-2.0.2",
+      "image": "postgres-results-rebuild-concept-hierarchy",
+      "tag":  "2.0.3",
       "public": false
     },
     { "name": "postgres-results-initialize-schema",
       "image": "postgres-results-initialize-schema",
-      "tag":  "2.0.3",
+      "tag":  "2.0.4",
       "public": false
     },
     { "name": "postgres-webapi-add-source",
       "image": "postgres-webapi-add-source",
-      "tag":  "2.0.1",
+      "tag":  "2.0.2",
       "public": false
     },
     { "name": "alpine",
@@ -257,8 +242,8 @@
       "public": false
     },
     { "name": "postgres-scratch-initialize-schema",
-      "image": "postgres",
-      "tag":  "scratch-initialize-schema-2.0.1",
+      "image": "postgres-scratch-initialize-schema",
+      "tag":  "2.0.2",
       "public": false
     }
   ]
