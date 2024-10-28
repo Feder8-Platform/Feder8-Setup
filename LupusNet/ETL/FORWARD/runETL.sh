@@ -43,5 +43,8 @@ docker run \
 --network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
+echo "Set permissions on new database schema's"
+docker exec -it postgres psql -U postgres -d OHDSI -c "REASSIGN OWNED BY feder8_admin TO ohdsi_admin;GRANT USAGE ON SCHEMA lupus_forward_final TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_forward_final TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_forward_cdm TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_forward_cdm TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_forward_src TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_forward_src TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_forward_etl TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_forward_etl TO ohdsi_app;"
+
 echo "End of ETL run"
 rm -rf etl-runner.env
