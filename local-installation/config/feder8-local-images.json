@@ -118,7 +118,7 @@
     },
     { "name": "add-postgres-user",
       "image": "postgres-add-user",
-      "tag":  "2.0.0",
+      "tag":  "2.1.0",
       "public": false
     },
     { "name": "postgres-omopcdm-initialize-schema",
