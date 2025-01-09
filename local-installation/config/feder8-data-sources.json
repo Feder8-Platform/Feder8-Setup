@@ -21,8 +21,8 @@
     { "name": "lupus",
       "domain":  "lupusnet.org",
       "data_sources": ["CNTO1275SLE3001", "LUPUS ALMENARA", "LUPUS APLC", "LUPUS Forward", "LUPUS Gladel", "LUPUS RELESSER"],
-      "prd_data_sources": ["CNTO1275SLE3001", "LUPUS ALMENARA", "LUPUS APLC", "LUPUS Forward", "LUPUS Gladel", "LUPUS RELESSER"],
-      "deprecated_data_sources": []
+      "prd_data_sources": ["LUPUS ALMENARA", "LUPUS APLC", "LUPUS Forward", "LUPUS Gladel", "LUPUS RELESSER"],
+      "deprecated_data_sources": ["CNTO1275SLE3001"]
     }
   ]
 }
