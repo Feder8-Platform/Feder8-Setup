@@ -4,6 +4,7 @@ set -e
 CDM_SCHEMA=omopcdm
 RENAMED_CDM_SHEMA=omopcdm53
 NEW_CDM_SCHEMA=omopcdm
+CDM_VERSION=5.4
 
 echo "Rename existing omopcdm schema to $RENAMED_CDM_SHEMA"
 docker exec -it postgres psql -U postgres -d OHDSI -c "ALTER SCHEMA $CDM_SCHEMA RENAME TO $RENAMED_CDM_SHEMA"
@@ -22,7 +23,7 @@ docker run \
 --rm \
 --name omopcdm-initialize-schema \
 -v shared:/var/lib/shared \
---env DB_HOST=postgres --env CDM_VERSION=5.4 \
+--env DB_HOST=postgres --env CDM_VERSION=$CDM_VERSION \
 --env DB_OMOPCDM_SCHEMA=$NEW_CDM_SCHEMA --env FEDER8_ADMIN_USERNAME=feder8_admin \
 --network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
@@ -36,7 +37,7 @@ TAG=2.0.3
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 docker run --rm --name  omopcdm-add-base-primary-keys \
 -v shared:/var/lib/shared \
---env DB_HOST=postgres --env DB_OMOPCDM_SCHEMA=$NEW_CDM_SCHEMA --env CDM_VERSION=5.4 \
+--env DB_HOST=postgres --env DB_OMOPCDM_SCHEMA=$NEW_CDM_SCHEMA --env CDM_VERSION=$CDM_VERSION \
 --network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
@@ -46,7 +47,7 @@ TAG=1.0
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 docker run --rm --name  omopcdm-add-base-constraints \
 -v shared:/var/lib/shared \
---env DB_HOST=postgres --env DB_OMOPCDM_SCHEMA=$NEW_CDM_SCHEMA --env CDM_VERSION=5.4 \
+--env DB_HOST=postgres --env DB_OMOPCDM_SCHEMA=$NEW_CDM_SCHEMA --env CDM_VERSION=$CDM_VERSION \
 --network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
@@ -56,7 +57,7 @@ TAG=2.0.2
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 docker run --rm --name  omopcdm-add-base-indexes \
 -v shared:/var/lib/shared \
---env DB_HOST=postgres --env DB_OMOPCDM_SCHEMA=$NEW_CDM_SCHEMA --env CDM_VERSION=5.4 \
+--env DB_HOST=postgres --env DB_OMOPCDM_SCHEMA=$NEW_CDM_SCHEMA --env CDM_VERSION=$CDM_VERSION \
 --network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
