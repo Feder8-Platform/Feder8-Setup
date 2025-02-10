@@ -4,7 +4,7 @@ TAG=2.2.0
 REGISTRY=harbor.honeur.org
 
 read -p "Enter organization name: " ORGANIZATION
-ORGANIZATION=${ORGANIZATION:-AIDA}
+ORGANIZATION=${ORGANIZATION}
 
 docker pull ${REGISTRY}/library/install-script:${TAG}
 
