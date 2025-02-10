@@ -3,8 +3,8 @@
 TAG=2.2.0
 REGISTRY=harbor.honeur.org
 
-echo -n "Enter organization name: "
-read ORGANIZATION
+read -p "Enter organization name: " ORGANIZATION
+ORGANIZATION=${ORGANIZATION:-AIDA}
 
 docker pull ${REGISTRY}/library/install-script:${TAG}
 
