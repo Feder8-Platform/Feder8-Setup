@@ -7,7 +7,6 @@ Table of Contents
     * [Operating system](#operating-system)
     * [Docker](#docker)
     * [Docker images](#docker-images)
-  * [Important Note](#important-note)
   * [Zeppelin installation instructions](#zeppelin-installation-instructions)
   * [Distributed Analytics installation instructions](#distributed-analytics-installation-instructions)
   * [Feder8 Studio installation instructions](#feder8-studio-installation-instructions)
@@ -48,9 +47,6 @@ The docker images are located on a central repository. Make sure you have a cent
 * For ESFURN: https://portal.esfurn.org
 
 Please request access by sending a mail to Michel Van Speybroeck (mvspeybr@its.jnj.com)
-
-## Important Note
-Components like [Atlas/WebAPI](#atlas/webapi-installation-instructions), [Zeppelin](#zeppelin-installation-instructions), [User Management](#user-management-installation-instructions) and [FEDER8 Studio](#feder8-studio-installation-instructions) are only accessible through a web browser when installing the [Proxy server](#proxy-server). Please run the installation script of the [Proxy server](#proxy-server) after installing or updating one of the previous mentioned components.
 
 ## Zeppelin installation instructions
 Zeppelin can be installed by running the installation script.
