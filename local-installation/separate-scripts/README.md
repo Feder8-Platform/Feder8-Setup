@@ -10,7 +10,6 @@ Table of Contents
   * [Zeppelin installation instructions](#zeppelin-installation-instructions)
   * [Distributed Analytics installation instructions](#distributed-analytics-installation-instructions)
   * [Feder8 Studio installation instructions](#feder8-studio-installation-instructions)
-  * [Disease Trajectory Analyser (DiTrAn)](#ditran)
   * [Post ETL installation steps](#post-etl-installation-steps)
     * [Add constraints and indexes](#add-constraints-and-indexes)
     * [Update custom concepts](#update-custom-concepts)
@@ -179,48 +178,6 @@ Windows
 Once done, the script will download the Feder8 Studio docker image and will create the docker container.
 
 :warning: Please run the installation script of the [Proxy server](#proxy-server) after installing or updating FEDER8 Studio. The proxy is necessary for accessing FEDER8 Studio through the browser.
-
-## <a id="ditran"></a> Disease Trajectory Analyser (DiTrAn)
-The Disease Trajectory Analyser (DiTrAn) can be installed by downloading and running the installation script.
-
-1. Download the installation script (**_start-disease-explorer.sh_** for Linux/MacOS or **_start-disease-explorer.cmd_** for Windows) using the following command:
-
-Linux/MacOS
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-disease-explorer.sh --output start-disease-explorer.sh && chmod +x start-disease-explorer.sh
-```
-
-Windows
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-disease-explorer.cmd --output start-disease-explorer.cmd
-```
-
-2. Run the script using the following command:
-
-Linux/MacOS
-```
-./start-disease-explorer.sh
-```
-
-Windows
-```
-.\start-disease-explorer.cmd
-```
-
-3. Download the data preparation script (**_run-ditran-data-pipeline.sh_** for Linux/MacOS using the following command:
-
-Linux/MacOS
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/run-ditran-data-pipeline.sh --output run-ditran-data-pipeline.sh && chmod +x run-ditran-data-pipeline.sh
-```
-
-4. Run the data preparation script using the following command:
-
-Linux/MacOS
-```
-./run-ditran-data-pipeline.sh
-```
-
 
 ## Post ETL installation steps
 ### Add constraints and indexes
