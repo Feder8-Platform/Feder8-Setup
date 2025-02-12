@@ -188,11 +188,11 @@ Installation steps:
 
 Linux/MacOS
 ```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-omop-indexes-and-constraints.sh --output start-omop-indexes-and-constraints.sh && chmod +x start-add-indexes-and-constraints.sh
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-add-indexes-and-constraints.sh --output start-add-indexes-and-constraints.sh && chmod +x start-add-indexes-and-constraints.sh
 ```
 Windows
 ```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-omop-indexes-and-constraints.cmd --output start-add-indexes-and-constraints.cmd
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-add-indexes-and-constraints.cmd --output start-add-indexes-and-constraints.cmd
 ```
 3.	Run the script
 
