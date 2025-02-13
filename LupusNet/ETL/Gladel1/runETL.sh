@@ -39,7 +39,7 @@ touch etl-runner.env
 # etl image
 echo "THERAPEUTIC_AREA=lupus" >> etl-runner.env
 echo "REGISTRY=harbor.lupusnet.org" >> etl-runner.env
-echo "ETL_IMAGE_NAME=etl-gladel/etl" >> etl-runner.env
+echo "ETL_IMAGE_NAME=etl-gladel-new/etl" >> etl-runner.env
 echo "ETL_IMAGE_TAG=latest" >> etl-runner.env
 # logs
 echo "VERBOSITY_LEVEL=$VERBOSITY_LEVEL" >> etl-runner.env
