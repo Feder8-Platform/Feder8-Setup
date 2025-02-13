@@ -1,0 +1,31 @@
+{
+  "questions": [
+    { "question":  "ETL image tag: ",
+      "env-var":  "ETL_IMAGE_TAG",
+      "default-value": "latest"
+    },
+    { "question": "Input Data folder",
+      "env-var": "SOURCE_DIR"
+    },
+    { "question": "Input Data File Name",
+      "env-var": "SOURCE_FILES"
+    },
+    { "question": "Delimiter of the source file",
+      "env-var": "DELIMITER"
+    },
+    {
+      "question": "Date of last export (yyyy-mm-dd)",
+      "env-var": "SOURCE_RELEASE_DATE",
+      "validation": {
+        "date-format": "%Y-%m-%d",
+        "date-after": "2021-01-01",
+        "date-before": "now"
+      }
+    },
+    { "question": "Log verbosity level",
+      "env-var": "VERBOSITY_LEVEL",
+      "allowed-values": "INFO,DEBUG",
+      "default-value": "INFO"
+    }
+  ]
+}
