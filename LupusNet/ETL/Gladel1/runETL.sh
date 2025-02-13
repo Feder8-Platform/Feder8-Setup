@@ -16,30 +16,6 @@ REPOSITORY=etl-gladel-new
 echo "Login into Harbor (please enter your email address and Harbor CLI secret if needed)"
 docker login $REGISTRY
 
-###################################
-## SPLITING SOURCE CSV IN CHUNKS ##
-###################################
-# TODO: still needed ?
-echo "Split source CSV file into smaller chunks"
-IMAGE=gladel-csv-splitter
-VERSION=1.0.0
-TAG=$VERSION
-
-touch gladel-csv-splitter.env
-echo "SOURCE_CSV=$SOURCE_CSV" >> gladel-csv-splitter.env
-echo "TARGET_CSV_PREFIX=gladel" >> gladel-csv-splitter.env
-
-docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
-
-docker run \
---rm \
---name gladel-csv-splitter \
---env-file gladel-csv-splitter.env \
--v $SOURCE_FOLDER:/script/data \
-$REGISTRY/$REPOSITORY/$IMAGE:$TAG
-
-rm -rf gladel-csv-splitter.env
-
 #############
 ## RUN ETL ##
 #############
