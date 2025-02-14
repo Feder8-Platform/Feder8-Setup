@@ -20,16 +20,49 @@ Offline helper scripts combines the installation of Feder8 components and provid
     * https://download.honeur.org/honeur/feder8-local-install-2.0.19.tar.gz
    > You will need to login with your central account credentials.
 
-2. Copy the install package to the installation system
-3. Unpack archive
+2. Please download feder8-local-images.json from a machine with internet access:
+
+    Linux/MacOS
+    ```
+    curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/config/feder8-local-images.json --output feder8-local-images.json
+    ```
+
+    Windows
+    ```
+    curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/config/feder8-local-images.json --output feder8-local-images.json
+    ```
+
+3. Please download therapeutic-areas.json from a machine with internet access:
+
+    Linux/MacOS
+    ```
+    curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/config/therapeutic-areas.json --output therapeutic-areas.json
+    ```
+
+    Windows
+    ```
+    curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/config/therapeutic-areas.json --output therapeutic-areas.json
+    ```
+
+
+4. Copy the install package and the two json files to the installation system
+5. Unpack archive feder8-local-install-2.0.19.tar.gz
     * Windows: Use [7Zip](https://www.7-zip.org/) to extract the `.tar.gz` file and then unpack the `.tar` file
     * Linux: `tar -xvf feder8-local-install-2.0.19.tar.gz`
     * MacOS: Finder can unpack the `.tar.gz` file by double-clicking it.
 
-4. The unpacked archive should contain the following files:
+6. The unpacked archive should contain the following files:
     * `start-feder8-offline.cmd`
     * `start-feder8-offline.sh`
     * `images.tar`
+
+7. Copy the two json files in the unpacked archived folder. Then, it should contain the following files:
+    * `feder8-local-images.json`
+    * `therapeutic-areas.json`
+    * `start-feder8-offline.cmd`
+    * `start-feder8-offline.sh`
+    * `images.tar`
+
 
 ### <a id="hardware"></a> Hardware
 Modern 64 bit (x86) dual core processor (or better)
