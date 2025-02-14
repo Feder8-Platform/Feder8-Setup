@@ -10,14 +10,10 @@ Table of Contents
   * [Zeppelin installation instructions](#zeppelin-installation-instructions)
   * [Distributed Analytics installation instructions](#distributed-analytics-installation-instructions)
   * [Feder8 Studio installation instructions](#feder8-studio-installation-instructions)
-  * [Disease Trajectory Analyser (DiTrAn)](#ditran)
   * [Post ETL installation steps](#post-etl-installation-steps)
     * [Add constraints and indexes](#add-constraints-and-indexes)
     * [Update custom concepts](#update-custom-concepts)
-  * [QA database](#qa-database)
-    * [Installation](#qa-database-installation)
-    * [Removal](#qa-database-removal)
-  * [Backup and restore of the database](#backup-and-restore-of-the-database)
+  * [Backup and restore](#backup-and-restore)
   * [Vocabulary update](#vocabulary-update)
   * [Custom concepts update](#custom-concepts-update)
 
@@ -180,48 +176,6 @@ Once done, the script will download the Feder8 Studio docker image and will crea
 
 :warning: Please run the installation script of the [Proxy server](#proxy-server) after installing or updating FEDER8 Studio. The proxy is necessary for accessing FEDER8 Studio through the browser.
 
-## <a id="ditran"></a> Disease Trajectory Analyser (DiTrAn)
-The Disease Trajectory Analyser (DiTrAn) can be installed by downloading and running the installation script.
-
-1. Download the installation script (**_start-disease-explorer.sh_** for Linux/MacOS or **_start-disease-explorer.cmd_** for Windows) using the following command:
-
-Linux/MacOS
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-disease-explorer.sh --output start-disease-explorer.sh && chmod +x start-disease-explorer.sh
-```
-
-Windows
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-disease-explorer.cmd --output start-disease-explorer.cmd
-```
-
-2. Run the script using the following command:
-
-Linux/MacOS
-```
-./start-disease-explorer.sh
-```
-
-Windows
-```
-.\start-disease-explorer.cmd
-```
-
-3. Download the data preparation script (**_run-ditran-data-pipeline.sh_** for Linux/MacOS using the following command:
-
-Linux/MacOS
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/run-ditran-data-pipeline.sh --output run-ditran-data-pipeline.sh && chmod +x run-ditran-data-pipeline.sh
-```
-
-4. Run the data preparation script using the following command:
-
-Linux/MacOS
-```
-./run-ditran-data-pipeline.sh
-```
-
-
 ## Post ETL installation steps
 ### Add constraints and indexes
 After the ETL is successfully executed, it’s recommended to add the constraints and indexes to the OMOP CDM tables. It will improve the performance and reduce the risk of corrupt data in the database.
@@ -231,21 +185,21 @@ Installation steps:
 
 Linux/MacOS
 ```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-omop-indexes-and-constraints.sh --output start-omop-indexes-and-constraints.sh && chmod +x start-omop-indexes-and-constraints.sh
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-add-indexes-and-constraints.sh --output start-add-indexes-and-constraints.sh && chmod +x start-add-indexes-and-constraints.sh
 ```
 Windows
 ```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-omop-indexes-and-constraints.cmd --output start-omop-indexes-and-constraints.cmd
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-add-indexes-and-constraints.cmd --output start-add-indexes-and-constraints.cmd
 ```
 3.	Run the script
 
 Linux/MacOS
 ```
-./start-omopcdm-indexes-and-constraints.sh
+./start-add-indexes-and-constraints.sh
 ```
 Windows
 ```
-.\start-omop-indexes-and-constraints.cmd
+.\start-add-indexes-and-constraints.cmd
 ```
 
 ### Update custom concepts
@@ -273,115 +227,52 @@ Windows
 .\start-custom-concepts-update.cmd
 ```
 
-## QA database
-QA database can be used as a test database. It's an exact replica of the full database installed with the script start-postgres.sh (on Linux or Mac) or start-postgres.cmd (on Windows). It is primarily used for testing scripts on data in the "omopcdm" db schema.
-### QA database installation
-Installation steps:
-1.	Open a terminal window (Command Prompt on Windows)
-2.	Download the installation script
+## Backup and restore
 
-Linux/MacOS
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-qa-database.sh --output start-qa-database.sh && chmod +x start-qa-database.sh
-```
-Windows
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-qa-database.cmd --output start-qa-database.cmd
-```
-3.	Run the script
-
-Linux/MacOS
-```
-./start-qa-database.sh
-```
-Windows
-```
-.\start-qa-database.cmd
-```
-### QA database removal
-Removal steps:
-1.	Open a terminal window (Command Prompt on Windows)
-2.	Download the removal script
-
-Linux/MacOS
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/remove-qa-database.sh --output remove-qa-database.sh && chmod +x remove-qa-database.sh
-```
-Windows
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/remove-qa-database.cmd --output remove-qa-database.cmd
-```
-3.	Run the script
-
-Linux/MacOS
-```
-./remove-qa-database.sh
-```
-Windows
-```
-.\remove-qa-database.cmd
-```
-
-## Backup and restore of the database
-
-### Database backup
+### Backup
 1. Download the backup script:
 
 Linux/MacOS
 ```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/backup-database.sh --output backup-database.sh && chmod +x backup-database.sh
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/backup-full.sh --output backup-full.sh && chmod +x backup-full.sh
 ```
 Windows
 ```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/backup-database.cmd --output backup-database.cmd
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/backup-full.cmd --output backup-full.cmd
 ```
 2. Run the script
 
 Linux/MacOS
 ```
-./backup-database.sh
+./backup-full.sh
 ```
 Windows
 ```
-.\backup-database.cmd
+.\backup-full.cmd
 ```
 The backup script will create a tar file name '<db_name>_<date_time>.tar.bz2' in the current directory. Creating the backup file can take a long time depending on the size of the database.
 Copy the backup file to a save location for long term storage.
 
-### Database restore
+### Restore
 1. Download the restore script:
 
 Linux/MacOS
 ```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/restore-database.sh  --output restore-database.sh  && chmod +x restore-database.sh
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/restore.sh  --output restore.sh  && chmod +x restore.sh
 ```
 Windows
 ```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/restore-database.cmd --output restore-database.cmd
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/restore.cmd --output restore.cmd
 ```
-2. Run the script and provide the name of the backup file as parameter. The backup file should be present in the folder where the script is executed.
+2. Run the script
 
 Linux/MacOS
 ```
-./restore-database.sh <db_name>_<date_time>.tar.bz2
+./restore.sh
 ```
 Windows
 ```
-.\restore-database.cmd <db_name>_<date_time>.tar.bz2
-```
-
-### Hot snapshot of the database volume
-The database volume can be copied to a new volume (with a different name) to take a snapshot of the current database state.
-
-1. Download the script
-
-```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/clone-docker-volume.sh --output clone-docker-volume.sh && chmod +x clone-volume.sh
-```
-
-2. Run the script, provide the source volume as first parameter and the target volume as second parameter.
-```
-./clone-docker-volume.sh pgdata pgdata_snapshot1
+.\restore.cmd
 ```
 
 ## Vocabulary update
