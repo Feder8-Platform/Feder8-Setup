@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 TAG=2.2.0
+PYTHON_VERSION=3.11
 REGISTRY=harbor.honeur.org
 
 if systemctl show --property ActiveState docker &> /dev/null; then
@@ -15,8 +16,8 @@ else
   IS_MAC=false
 fi
 
-THERAPEUTIC_AREA_JSON_PATH=/usr/local/lib/python3.11/site-packages/feder8-${TAG}-py3.11.egg/cli/therapeutic_area/therapeutic-areas.json
-FEDER8_LOCAL_IMAGE_JSON_PATH=/usr/local/lib/python3.11/site-packages/feder8-${TAG}-py3.11.egg/cli/configuration/feder8-local-images.json
+THERAPEUTIC_AREA_JSON_PATH=/usr/local/lib/python3.11/site-packages/feder8-${TAG}-py${PYTHON_VERSION}.egg/cli/therapeutic_area/therapeutic-areas.json
+FEDER8_LOCAL_IMAGE_JSON_PATH=/usr/local/lib/python3.11/site-packages/feder8-${TAG}-py${PYTHON_VERSION}.egg/cli/configuration/feder8-local-images.json
 
 if [ -f "images.tar" ] && [ -f "therapeutic-areas.json" ] && [ -f "feder8-local-images.json" ]; then
   echo Loading docker images. This could take a while...
