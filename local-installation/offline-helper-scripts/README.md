@@ -17,7 +17,7 @@ Offline helper scripts combines the installation of Feder8 components and provid
 
 ### <a id="offline-install-package"></a> Offline install package
 1. Please download the offline install package from a machine with internet access:
-    * https://download.honeur.org/honeur/feder8-local-install-2.0.19.tar.gz
+    * https://download.honeur.org/honeur/feder8-local-install-latest.tar.gz
    > You will need to login with your central account credentials.
 
 2. Please download feder8-local-images.json from a machine with internet access:
@@ -46,9 +46,9 @@ Offline helper scripts combines the installation of Feder8 components and provid
 
 
 4. Copy the install package and the two json files to the installation system
-5. Unpack archive feder8-local-install-2.0.19.tar.gz
+5. Unpack archive feder8-local-install-latest.tar.gz
     * Windows: Use [7Zip](https://www.7-zip.org/) to extract the `.tar.gz` file and then unpack the `.tar` file
-    * Linux: `tar -xvf feder8-local-install-2.0.19.tar.gz`
+    * Linux: `tar -xvf feder8-local-install-latest.tar.gz`
     * MacOS: Finder can unpack the `.tar.gz` file by double-clicking it.
 
 6. The unpacked archive should contain the following files:
