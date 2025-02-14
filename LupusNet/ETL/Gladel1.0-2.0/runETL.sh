@@ -22,7 +22,7 @@ docker login $REGISTRY
 REGISTRY=harbor.honeur.org
 REPOSITORY=library
 IMAGE=etl-runner
-VERSION=1.1.2
+VERSION=1.1.4
 TAG=$VERSION
 
 LOG_FOLDER_HOST=${PWD}/log
