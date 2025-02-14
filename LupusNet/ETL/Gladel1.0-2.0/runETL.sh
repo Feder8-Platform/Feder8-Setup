@@ -33,7 +33,7 @@ echo "Pull ETL runner image"
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
 #echo "Download ETL questions"
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Gladel1/questions.json --output questions.json
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Gladel1.0-2.0/questions.json --output questions.json
 
 touch etl-runner.env
 # etl image
