@@ -52,7 +52,7 @@
     },
     { "name": "feder8-studio",
       "image": "feder8-studio",
-      "tag":  "2.1.2",
+      "tag":  "2.1.3",
       "public": false
     },
     { "name": "vs-code-server",
