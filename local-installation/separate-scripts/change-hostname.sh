@@ -3,7 +3,7 @@
 REGISTRY=harbor.honeur.org
 REPOSITORY=library
 IMAGE=install-script
-TAG=2.2.0
+TAG=2.2.1
 
 if systemctl show --property ActiveState docker &> /dev/null; then
     DOCKER_CERT_SUPPORT=true

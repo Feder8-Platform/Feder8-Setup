@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TAG=2.2.0
+TAG=2.2.1
 REGISTRY=harbor.honeur.org
 
 read -p "Enter organization name: " ORGANIZATION
