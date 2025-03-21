@@ -93,7 +93,7 @@
     },
     { "name": "nginx",
       "image": "nginx",
-      "tag":  "2.1.1",
+      "tag":  "2.1.2",
       "public": false
     },
     { "name": "backup",
