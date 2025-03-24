@@ -27,12 +27,12 @@
     },
     { "name": "atlas",
       "image": "atlas",
-      "tag":  "2.9.0-2.1.0",
+      "tag":  "2.14.1-1.0.0",
       "public": false
     },
     { "name": "webapi",
       "image": "webapi",
-      "tag":  "2.9.0-2.1.0",
+      "tag":  "2.14.0-1.0.0",
       "public": false
     },
     { "name": "zeppelin",
