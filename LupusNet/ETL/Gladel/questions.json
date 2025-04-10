@@ -17,7 +17,7 @@
       "env-var": "LAST_DATA_EXPORT",
       "validation": {
         "date-format": "%Y-%m-%d",
-        "date-after": "2021-01-01",
+        "date-after": "2025-01-01",
         "date-before": "now"
       }
     }

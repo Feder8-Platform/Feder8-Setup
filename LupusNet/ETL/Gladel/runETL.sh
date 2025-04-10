@@ -5,34 +5,27 @@ read -p "Source data folder [${PWD}/data]: " data_folder
 SOURCE_FOLDER=${data_folder:-${PWD}/data}
 read -p "Source CSV file [gladel.csv]: " csv_file
 SOURCE_CSV=${csv_file:-gladel.csv}
+read -p "Source delimiter [;]: " src_delimiter
+SOURCE_DELIMITER=${src_delimiter:-;}
 
 REGISTRY=harbor.lupusnet.org
 REPOSITORY=etl-gladel
 
-# Log into Harbor
 echo "Login into Harbor (please enter your email address and Harbor CLI secret if needed)"
 docker login $REGISTRY
 
-# Split source CSV in chunks
-echo "Split source CSV file into smaller chunks"
-IMAGE=gladel-csv-splitter
-VERSION=1.0.0
-TAG=$VERSION
-
-touch gladel-csv-splitter.env
-echo "SOURCE_CSV=$SOURCE_CSV" >> gladel-csv-splitter.env
-echo "TARGET_CSV_PREFIX=gladel" >> gladel-csv-splitter.env
+echo "Pre-process source data"
+IMAGE=src-data-pre-processor
+TAG=1.0.0
 
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
-docker run \
---rm \
---name gladel-csv-splitter \
---env-file gladel-csv-splitter.env \
+docker run --rm --name gladel-src-data-pre-processor \
+--env SOURCE_CSV=$SOURCE_CSV \
+--env SOURCE_DELIMITER="$SOURCE_DELIMITER" \
+--env TARGET_DELIMITER="," \
 -v $SOURCE_FOLDER:/script/data \
-$REGISTRY/$REPOSITORY/$IMAGE:$TAG
-
-rm -rf gladel-csv-splitter.env
+ $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
 # Run ETL
 REGISTRY=harbor.honeur.org
@@ -42,7 +35,7 @@ VERSION=1.1.2
 TAG=$VERSION
 
 LOG_FOLDER_HOST=${PWD}/log
-DATA_FOLDER_HOST=${PWD}/data
+DATA_FOLDER_HOST=$SOURCE_FOLDER
 QA_FOLDER_HOST=${PWD}/qa
 
 echo "Pull ETL runner image"
@@ -64,6 +57,7 @@ echo "DATA_FOLDER=/script/etl/data" >> etl-runner.env
 echo "QA_FOLDER_HOST=$QA_FOLDER_HOST" >> etl-runner.env
 echo "QA_FOLDER_ETL=/script/etl/gladel/reports" >> etl-runner.env
 echo "RUN_DQD=false" >> etl-runner.env
+echo "LAST_DATA_EXPORT=2025-04-07" >> etl-runner.env
 
 echo "Run ETL"
 docker run \
