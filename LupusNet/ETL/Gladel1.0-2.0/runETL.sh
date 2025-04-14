@@ -1,36 +1,28 @@
 #!/usr/bin/env bash
 set -e
 
-#######################
-## GENERAL QUESTIONS ##
-#######################
-read -p "Source data folder [${PWD}/data]: " data_folder
-SOURCE_FOLDER=${data_folder:-${PWD}/data}
-read -p "Source CSV file [gladel.csv]: " csv_file
-SOURCE_CSV=${csv_file:-gladel.csv}
-
-REGISTRY=harbor.lupusnet.org
-REPOSITORY=etl-gladel-new
-
-# Log into Harbor
-echo "Login into Harbor (please enter your email address and Harbor CLI secret if needed)"
-docker login $REGISTRY
-
 #############
 ## RUN ETL ##
 #############
-REGISTRY=harbor.honeur.org
-REPOSITORY=library
-IMAGE=etl-runner
-VERSION=1.1.4
-TAG=$VERSION
+REGISTRY_ETL_RUNNER=harbor.honeur.org
+REPOSITORY_ETL_RUNNER=library
+IMAGE_ETL_RUNNER=etl-runner
+VERSION_ETL_RUNNER=1.1.4
+TAG_ETL_RUNNER=$VERSION_ETL_RUNNER
 
 LOG_FOLDER_HOST=${PWD}/log
 DATA_FOLDER_HOST=${PWD}/data
 QA_FOLDER_HOST=${PWD}/qa
 
 echo "Pull ETL runner image"
-docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
+docker pull $REGISTRY_ETL_RUNNER/$REPOSITORY_ETL_RUNNER/$IMAGE_ETL_RUNNER:$TAG_ETL_RUNNER
+
+REGISTRY=harbor.lupusnet.org
+REPOSITORY=etl-gladel-2.0
+
+# Log into Harbor
+echo "Login into Harbor (please enter your email address and Harbor CLI secret if needed)"
+docker login $REGISTRY
 
 #echo "Download ETL questions"
 curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Gladel1.0-2.0/questions.json --output questions.json
@@ -38,18 +30,14 @@ curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/L
 touch etl-runner.env
 # etl image
 echo "THERAPEUTIC_AREA=lupus" >> etl-runner.env
-echo "REGISTRY=harbor.lupusnet.org" >> etl-runner.env
-echo "ETL_IMAGE_NAME=etl-gladel-new/etl" >> etl-runner.env
-echo "ETL_IMAGE_TAG=latest" >> etl-runner.env
+echo "REGISTRY=$REGISTRY" >> etl-runner.env
+echo "ETL_IMAGE_NAME=$REPOSITORY/etl" >> etl-runner.env
+echo "ETL_IMAGE_TAG=current" >> etl-runner.env
 # logs
-echo "VERBOSITY_LEVEL=$VERBOSITY_LEVEL" >> etl-runner.env
-echo "LOG_FOLDER_HOST=./log" >> etl-runner.env
+echo "LOG_FOLDER_HOST=${PWD}/log" >> etl-runner.env
 echo "LOG_FOLDER=/log" >> etl-runner.env
 # source data
-echo "SOURCE_DIR=$SOURCE_DIR" >> etl-runner.env
-echo "SOURCE_FILES=$SOURCE_FILES" >> etl-runner.env
-echo "DELIMITER=$DELIMITER" >> etl-runner.env
-echo "DATA_FOLDER=/data" >> etl-runner.env
+echo "DATA_FOLDER=/source" >> etl-runner.env
 echo "SOURCE_RELEASE_DATE=$SOURCE_RELEASE_DATE" >> etl-runner.env
 echo "ENCODING=utf-8" >> etl-runner.env
 echo "FILE_TYPE=csv" >> etl-runner.env
@@ -67,10 +55,10 @@ docker run \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v ${PWD}/questions.json:/script/questions.json \
 --network feder8-net \
-$REGISTRY/$REPOSITORY/$IMAGE:$TAG
+$REGISTRY_ETL_RUNNER/$REPOSITORY_ETL_RUNNER/$IMAGE_ETL_RUNNER:$TAG_ETL_RUNNER
 
 echo "End of ETL run"
 rm -rf etl-runner.env
 
 echo "Set permissions on new database schema's"
-docker exec -it postgres psql -U postgres -d OHDSI -c "REASSIGN OWNED BY feder8_admin TO ohdsi_admin;GRANT USAGE ON SCHEMA lupus_gladel_final TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA lupus_gladel_final TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_gladel_src TO ohdsi_app;GRANT ALL ON ALL TABLES IN SCHEMA lupus_gladel_src TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_gladel_etl TO ohdsi_app;GRANT ALL ON ALL TABLES IN SCHEMA lupus_gladel_etl TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_gladel_cdm TO ohdsi_app;GRANT ALL ON ALL TABLES IN SCHEMA lupus_gladel_cdm TO ohdsi_app;"
+docker exec -it postgres psql -U postgres -d OHDSI -c "REASSIGN OWNED BY feder8_admin TO ohdsi_admin;GRANT USAGE ON SCHEMA omopcdm TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA omopcdm TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_gladel_src TO ohdsi_app;GRANT ALL ON ALL TABLES IN SCHEMA lupus_gladel_src TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_gladel_etl TO ohdsi_app;GRANT ALL ON ALL TABLES IN SCHEMA lupus_gladel_etl TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_gladel_cdm TO ohdsi_app;GRANT ALL ON ALL TABLES IN SCHEMA lupus_gladel_cdm TO ohdsi_app;"
