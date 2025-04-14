@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TAG=2.2.1
+TAG=2.2.3
 REGISTRY=harbor.honeur.org
 
 docker pull ${REGISTRY}/library/install-script:${TAG}
