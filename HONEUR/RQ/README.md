@@ -8,8 +8,10 @@ Studies
 =================
 * [RQ1](#rq1)
 * [RQ3](#rq3)
-* [Octogenarian study](#octogenarian-study)
+* [Landmark study](#landmark-study)
 * [EMD study](#emd-study)
+* [FHR study](#fhr-study)
+* [Octogenarian study](#octogenarian-study)
 
 ## RQ1
 ### Execution steps
@@ -29,15 +31,6 @@ Studies
    * ```./run-rq3.sh```
 4. The script will run RQ3 and show the output of the code
 
-## Octogenarian study
-### Execution steps
-1. Open a terminal window
-2. Download the run script:
-   * ```curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-octogenarian-study.sh --output run-octogenarian-study.sh  && chmod +x run-octogenarian-study.sh```
-3. Execute the script (from the directory where the script is downloaded)
-   * ```./run-octogenarian-study.sh```
-4. The script will run the Octogenarian study and show the output of the code
-
 ## RQ1, RQ3 & Octogenarian study combined
 ### Execution steps
 1. Open a terminal window
@@ -47,6 +40,22 @@ Studies
    * ```./run-rq1-rq3-octogenarian-study.sh```
 4. The script will run RQ1, RQ3 and the Octogenarian study and show the output of the code
 
+## Landmark study
+### Execution steps
+1. Open a terminal window
+2. Download the 'Landmark Study' run script:
+   * Linux:
+     ```curl -L https://raw.githubusercontent.com/solventrix/Honeur-Setup/master/LandmarkStudy/run-landmark-study.sh --output run-landmark-study.sh  && chmod +x run-landmark-study.sh```
+   * Windows:
+     ```curl -L https://raw.githubusercontent.com/solventrix/Honeur-Setup/master/LandmarkStudy/run-landmark-study.cmd --output run-landmark-study.cmd```
+3. Execute the script (from the directory where the script is downloaded)
+   * Linux:
+     ```./run-landmark-study.sh```
+   * Windows:
+     ```run-landmark-study.cmd```
+4. The script will run the Landmark study and show the output of the code
+
+
 ## EMD study
 ### Execution steps
 1. Open a terminal window
@@ -55,3 +64,21 @@ Studies
 3. Execute the script (from the directory where the script is downloaded)
    * ```./run-emd-study.sh```
 4. The script will run the EMD study and show the output of the code
+
+## FHR study
+### Execution steps
+1. Open a terminal window
+2. Download the run script:
+   * ```curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-fhr-study.sh --output run-fhr-study.sh  && chmod +x run-fhr-study.sh```
+3. Execute the script (from the directory where the script is downloaded)
+   * ```./run-fhr-study.sh```
+4. The script will run the FHR study and show the output of the code
+
+## Octogenarian study
+### Execution steps
+1. Open a terminal window
+2. Download the run script:
+   * ```curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-octogenarian-study.sh --output run-octogenarian-study.sh  && chmod +x run-octogenarian-study.sh```
+3. Execute the script (from the directory where the script is downloaded)
+   * ```./run-octogenarian-study.sh```
+4. The script will run the Octogenarian study and show the output of the code
