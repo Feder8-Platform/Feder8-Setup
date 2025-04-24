@@ -208,7 +208,7 @@
     },
     { "name": "postgres-webapi-add-source",
       "image": "postgres-webapi-add-source",
-      "tag":  "2.0.2",
+      "tag":  "2.0.3",
       "public": false
     },
     { "name": "alpine",
