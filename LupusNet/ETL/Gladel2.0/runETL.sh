@@ -59,6 +59,3 @@ $REGISTRY_ETL_RUNNER/$REPOSITORY_ETL_RUNNER/$IMAGE_ETL_RUNNER:$TAG_ETL_RUNNER
 
 echo "End of ETL run"
 rm -rf etl-runner.env
-
-echo "Set permissions on new database schema's"
-docker exec -it postgres psql -U postgres -d OHDSI -c "REASSIGN OWNED BY feder8_admin TO ohdsi_admin;GRANT USAGE ON SCHEMA omopcdm TO ohdsi_app;GRANT SELECT ON ALL TABLES IN SCHEMA omopcdm TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_gladel_src TO ohdsi_app;GRANT ALL ON ALL TABLES IN SCHEMA lupus_gladel_src TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_gladel_etl TO ohdsi_app;GRANT ALL ON ALL TABLES IN SCHEMA lupus_gladel_etl TO ohdsi_app;GRANT USAGE ON SCHEMA lupus_gladel_cdm TO ohdsi_app;GRANT ALL ON ALL TABLES IN SCHEMA lupus_gladel_cdm TO ohdsi_app;"
