@@ -25,7 +25,7 @@ echo "Login into Harbor (please enter your email address and Harbor CLI secret i
 docker login $REGISTRY
 
 #echo "Download ETL questions"
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Gladel1.0-2.0/questions.json --output questions.json
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Gladel2.0/questions.json --output questions.json
 
 touch etl-runner.env
 # etl image
