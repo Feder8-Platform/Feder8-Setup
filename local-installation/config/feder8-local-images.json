@@ -37,7 +37,7 @@
     },
     { "name": "zeppelin",
       "image": "zeppelin",
-      "tag":  "0.8.2-2.1.0",
+      "tag":  "0.12.0-1.0.0",
       "public": false
     },
     { "name": "distributed-analytics-r-server",
