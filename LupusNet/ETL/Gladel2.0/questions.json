@@ -13,6 +13,14 @@
     { "question": "Delimiter of the source file",
       "env-var": "DELIMITER"
     },
+    { "question": "Clinical tables schema",
+      "env-var": "TARGET_SCHEMA",
+      "default-value": "omopcdm"
+    },
+    { "question": "Vocabulary schema",
+      "env-var": "VOCAB_SCHEMA",
+      "default-value": "omopcdm"
+    },
     {
       "question": "Date of last export (yyyy-mm-dd)",
       "env-var": "SOURCE_RELEASE_DATE",

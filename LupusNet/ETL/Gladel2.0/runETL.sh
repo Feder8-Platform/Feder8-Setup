@@ -36,6 +36,9 @@ echo "ETL_IMAGE_TAG=current" >> etl-runner.env
 # logs
 echo "LOG_FOLDER_HOST=${PWD}/log" >> etl-runner.env
 echo "LOG_FOLDER=/log" >> etl-runner.env
+# schemas 
+echo "TARGET_SCHEMA=$TARGET_SCHEMA" >> etl-runner.env 
+echo "VOCAB_SCHEMA=$VOCAB_SCHEMA" >> etl-runner.env 
 # source data
 echo "DATA_FOLDER=/source" >> etl-runner.env
 echo "SOURCE_RELEASE_DATE=$SOURCE_RELEASE_DATE" >> etl-runner.env
