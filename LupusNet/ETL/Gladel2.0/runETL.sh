@@ -20,10 +20,6 @@ docker pull $REGISTRY_ETL_RUNNER/$REPOSITORY_ETL_RUNNER/$IMAGE_ETL_RUNNER:$TAG_E
 REGISTRY=harbor.lupusnet.org
 REPOSITORY=etl-gladel-2.0
 
-# Log into Harbor
-echo "Login into Harbor (please enter your email address and Harbor CLI secret if needed)"
-docker login $REGISTRY
-
 #echo "Download ETL questions"
 curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Gladel2.0/questions.json --output questions.json
 
