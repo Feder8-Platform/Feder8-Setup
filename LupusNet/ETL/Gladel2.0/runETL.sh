@@ -19,6 +19,8 @@ docker pull $REGISTRY_ETL_RUNNER/$REPOSITORY_ETL_RUNNER/$IMAGE_ETL_RUNNER:$TAG_E
 
 REGISTRY=harbor.lupusnet.org
 REPOSITORY=etl-gladel-2.0
+CDM_SCHEMA=omopcdm
+VOCAB_SCHEMA=$CDM_SCHEMA
 
 #echo "Download ETL questions"
 curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Gladel2.0/questions.json --output questions.json
@@ -33,7 +35,7 @@ echo "ETL_IMAGE_TAG=current" >> etl-runner.env
 echo "LOG_FOLDER_HOST=$LOG_FOLDER_HOST" >> etl-runner.env
 echo "LOG_FOLDER=/log" >> etl-runner.env
 # schemas 
-echo "TARGET_SCHEMA=$TARGET_SCHEMA" >> etl-runner.env 
+echo "DB_SCHEMA=$CDM_SCHEMA" >> etl-runner.env
 echo "VOCAB_SCHEMA=$VOCAB_SCHEMA" >> etl-runner.env 
 # source data
 echo "DATA_FOLDER_HOST=$DATA_FOLDER_HOST" >> etl-runner.env
