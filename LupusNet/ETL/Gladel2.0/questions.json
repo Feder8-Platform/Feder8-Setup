@@ -8,10 +8,12 @@
       "env-var": "DATA_FOLDER_HOST"
     },
     { "question": "Input Data File Name: ",
-      "env-var": "SOURCE_FILES"
+      "env-var": "SOURCE_FILES",
+      "default-value": "gladel.csv"
     },
     { "question": "Delimiter of the source file: ",
-      "env-var": "DELIMITER"
+      "env-var": "DELIMITER",
+      "default-value": ","
     },
     { "question": "Clinical tables schema: ",
       "env-var": "TARGET_SCHEMA",
