@@ -324,3 +324,28 @@ Windows
 ```
 .\start-custom-concepts-update.cmd
 ```
+
+## DQD Viewer
+To locally visualise the DQD results, follow these steps:
+
+1.	Open a terminal window (Command Prompt on Windows)
+2.	Download the installation script
+
+Linux/MacOS
+```
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/run-dqd-viewer.sh --output run-dqd-viewer.sh && chmod +x run-dqd-viewer.sh
+```
+Windows
+```
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/run-dqd-viewer.cmd --output run-dqd-viewer.cmd
+```
+3.	Run the script
+
+Linux/MacOS
+```
+./run-dqd-viewer.sh
+```
+Windows
+```
+.\run-dqd-viewer.cmd
+```
