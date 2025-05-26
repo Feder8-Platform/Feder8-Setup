@@ -16,5 +16,4 @@ docker run \
 --name dqd-viewer \
 -v $FILE_PATH:/dqd/dqd.json \
 -p 3838:3838 \
---network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
