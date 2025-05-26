@@ -10,6 +10,7 @@ Studies
 * [RQ3](#rq3)
 * [Landmark study](#landmark-study)
 * [EMD study](#emd-study)
+* [PERIODIC study](#periodic-study)
 * [FHR study](#fhr-study)
 * [Octogenarian study](#octogenarian-study)
 
@@ -63,6 +64,15 @@ Studies
    * ```curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-emd-study.sh --output run-emd-study.sh  && chmod +x run-emd-study.sh```
 3. Execute the script (from the directory where the script is downloaded)
    * ```./run-emd-study.sh```
+4. The script will run the EMD study and show the output of the code
+
+## PERIODIC study
+### Execution steps
+1. Open a terminal window
+2. Download the run script:
+    * ```curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-periodic-study.sh --output run-periodic-study.sh  && chmod +x run-periodic-study.sh```
+3. Execute the script (from the directory where the script is downloaded)
+    * ```./run-periodic-study.sh```
 4. The script will run the EMD study and show the output of the code
 
 ## FHR study
