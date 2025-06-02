@@ -4,7 +4,7 @@
       "light_theme_color": "#0794e0",
       "dark_theme_color": "#002562",
       "domain":  "honeur.org",
-      "organizations": ["AIDA","CAV","CCL","CHU Dijon","CHU Lille","CHU Montpellier","CLLEAR","EMMOS","GMV","H12O","iOMEDICO","IUCT","Janssen","OIS","Oncotyrol","RMG","Sourasky","UHL","Wurzburg","Zaragosa"],
+      "organizations": ["AIDA","CAV","CCL","CHU Dijon","CHU Lille","CHU Montpellier","CLLEAR","EMMOS","GMV","H12O","iOMEDICO","IUCT","Janssen","Oncotyrol","RMG","Sourasky","TriNetX","UHL","Wurzburg","Zaragosa"],
       "test_organizations": ["TestOrg1", "TestOrg2", "TestOrg3", "TestOrg4", "TestOrg5", "TestOrg6"],
       "cdm_version": "5.3.1"
     },
@@ -21,7 +21,7 @@
       "dark_theme_color": "#44594c",
       "domain":  "esfurn.org",
       "organizations": ["Birmingham", "CNIO", "Erasmus","Erlangen", "Janssen"],
-      "test_organizations": ["EsfurnTestOrg1", "EsfurnTestOrg2", "EsfurnTestOrg3", "EsfurnTestOrg4", "EsfurnTestOrg5", "EsfurnTestOrg6"], 
+      "test_organizations": ["EsfurnTestOrg1", "EsfurnTestOrg2", "EsfurnTestOrg3", "EsfurnTestOrg4", "EsfurnTestOrg5", "EsfurnTestOrg6"],
       "cdm_version": "5.3.1"
     },
     { "name": "athena",
