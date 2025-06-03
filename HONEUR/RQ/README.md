@@ -46,9 +46,9 @@ Studies
 1. Open a terminal window
 2. Download the 'Landmark Study' run script:
    * Linux:
-     ```curl -L https://raw.githubusercontent.com/solventrix/Honeur-Setup/master/LandmarkStudy/run-landmark-study.sh --output run-landmark-study.sh  && chmod +x run-landmark-study.sh```
+     ```curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-landmark-study.sh --output run-landmark-study.sh  && chmod +x run-landmark-study.sh```
    * Windows:
-     ```curl -L https://raw.githubusercontent.com/solventrix/Honeur-Setup/master/LandmarkStudy/run-landmark-study.cmd --output run-landmark-study.cmd```
+     ```curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-landmark-study.cmd --output run-landmark-study.cmd```
 3. Execute the script (from the directory where the script is downloaded)
    * Linux:
      ```./run-landmark-study.sh```
