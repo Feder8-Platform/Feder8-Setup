@@ -18,6 +18,7 @@ docker run --name periodic-study \
 --env SCRIPT_UUID=d93f641f-3fff-427b-8aad-f06cd6e9a3d8 \
 -v $PWD/results:/script/results \
 -v $PWD/logofcode.txt:/script/logofcode.txt \
+-v feder8-data:/home/feder8/data \
 --network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
