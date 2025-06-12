@@ -4,7 +4,7 @@ set -ex
 REGISTRY=harbor.honeur.org
 REPOSITORY=script
 IMAGE=periodic-study
-VERSION=20250602
+VERSION=20250611
 TAG=$VERSION
 
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
@@ -15,7 +15,7 @@ start=$(date +%s)
 
 docker run --name periodic-study \
 --env THERAPEUTIC_AREA=HONEUR --env DB_ANALYSIS_TABLE_NAME=analysis_table \
---env SCRIPT_UUID=8e3be610-1109-42f7-aa58-2439c85abdab \
+--env SCRIPT_UUID=d93f641f-3fff-427b-8aad-f06cd6e9a3d8 \
 -v $PWD/results:/script/results \
 -v $PWD/logofcode.txt:/script/logofcode.txt \
 --network feder8-net \
