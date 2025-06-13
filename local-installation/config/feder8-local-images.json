@@ -5,6 +5,16 @@
       "tag":  "13-omopcdm-{cdm_version}-webapi-2.9.0-feb-2024",
       "public": false
     },
+    { "name": "postgres-restore-17",
+      "image": "postgres",
+      "tag":  "17-omopcdm-{cdm_version}-slim",
+      "public": false
+    },
+    { "name": "postgres-restore-13",
+      "image": "postgres",
+      "tag":  "13-omopcdm-{cdm_version}-webapi-2.9.0-2.0.11-slim",
+      "public": false
+    },
     { "name": "config-server",
       "image": "config-server",
       "tag":  "2.1.0",
