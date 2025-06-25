@@ -47,7 +47,7 @@
     },
     { "name": "distributed-analytics-remote",
       "image": "distributed-analytics",
-      "tag":  "remote-2.1.0",
+      "tag":  "remote-2.1.1",
       "public": false
     },
     { "name": "feder8-studio",
