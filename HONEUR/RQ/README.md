@@ -13,6 +13,7 @@ Studies
 * [PERIODIC study](#periodic-study)
 * [FHR study](#fhr-study)
 * [Octogenarian study](#octogenarian-study)
+* [Lenalidomide maintenance study](#lenalidomide-maintenance-study)
 
 ## RQ1
 ### Execution steps
@@ -92,3 +93,12 @@ Studies
 3. Execute the script (from the directory where the script is downloaded)
    * ```./run-octogenarian-study.sh```
 4. The script will run the Octogenarian study and show the output of the code
+
+## Lenalidomide maintenance study
+### Execution steps
+1. Open a terminal window
+2. Download the run script:
+   * ```curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-len-maintenance-study.sh --output run-len-maintenance-study.sh  && chmod +x run-len-maintenance-study.sh```
+3. Execute the script (from the directory where the script is downloaded)
+   * ```./run-len-maintenance-study.sh```
+4. The script will run the Len maintenance study and show the output of the code
