@@ -1,0 +1,45 @@
+{
+  "questions": [
+    { "question":  "ETL image tag: ",
+      "env-var":  "ETL_IMAGE_TAG",
+      "default-value": "current"
+    },
+    { "question": "Source data folder: ",
+      "env-var": "DATA_FOLDER_HOST"
+    },
+    { "question": "Source data filename (without extension): ",
+      "env-var": "SOURCE_FILES",
+      "default-value": "gladel"
+    },
+    { "question": "Source data file extension: ",
+      "env-var": "FILE_TYPE",
+      "default-value": "csv"
+    },
+    { "question": "Delimiter of the source file: ",
+      "env-var": "DELIMITER",
+      "default-value": ","
+    },
+    { "question": "Clinical tables schema: ",
+      "env-var": "DB_SCHEMA",
+      "default-value": "omopcdm"
+    },
+    { "question": "Vocabulary schema: ",
+      "env-var": "VOCAB_SCHEMA",
+      "default-value": "omopcdm"
+    },
+    {
+      "question": "Date of last export (yyyy-mm-dd): ",
+      "env-var": "SOURCE_RELEASE_DATE",
+      "validation": {
+        "date-format": "%Y-%m-%d",
+        "date-after": "2024-01-01",
+        "date-before": "now"
+      }
+    },
+    { "question": "Log verbosity level: ",
+      "env-var": "VERBOSITY_LEVEL",
+      "allowed-values": "INFO,DEBUG",
+      "default-value": "INFO"
+    }
+  ]
+}
