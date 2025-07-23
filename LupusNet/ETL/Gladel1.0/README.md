@@ -17,7 +17,6 @@
 4. The script will request for:
     * the path to the folder that contains the input data file
     * the name of the input data file
-    * the username and password to connect to the OMOP CDM database (a running Docker container named `postgres`)
 5. The script will run the ETL code and show the output of the code
 
 Please review the reports created by the script. Confirm that no patient-level information was written out before sharing them.

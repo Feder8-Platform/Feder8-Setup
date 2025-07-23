@@ -23,7 +23,7 @@ CDM_SCHEMA=gladel1
 VOCAB_SCHEMA=omopcdm
 
 #echo "Download ETL questions"
-#curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Gladel1.0/questions.json --output questions.json
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/ETL/Gladel1.0/questions.json --output questions.json
 
 touch etl-runner.env
 # etl image
@@ -40,7 +40,6 @@ echo "VOCAB_SCHEMA=$VOCAB_SCHEMA" >> etl-runner.env
 # source data
 echo "DATA_FOLDER_HOST=$DATA_FOLDER_HOST" >> etl-runner.env
 echo "DATA_FOLDER=/source" >> etl-runner.env
-echo "SOURCE_RELEASE_DATE=$SOURCE_RELEASE_DATE" >> etl-runner.env
 echo "ENCODING=utf-8" >> etl-runner.env
 echo "FILE_TYPE=csv" >> etl-runner.env
 # QA and DQD
