@@ -4,7 +4,7 @@ set -eux
 REGISTRY=harbor.lupusnet.org
 REPOSITORY=distributed-analytics
 IMAGE=rq2-feasibility
-TAG=1.5.3
+TAG=1.5.4
 
 echo "Docker login @ $REGISTRY"
 docker login $REGISTRY
@@ -13,7 +13,7 @@ echo "Pull image"
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
 docker run --rm --name lupusnet-rq2-feasibility \
---env THERAPEUTIC_AREA=lupus --env SCRIPT_UUID=88f1203e-5678-4e61-a9b6-e1f44fa167d1 \
+--env THERAPEUTIC_AREA=lupus --env SCRIPT_UUID=67ce68cd-aa6f-43a1-852c-ec2626a210fd \
 -v $PWD/results:/script/results \
 --network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
