@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TAG=2.2.4
+TAG=2.2.5
 PYTHON_VERSION=3.11
 REGISTRY=harbor.honeur.org
 
