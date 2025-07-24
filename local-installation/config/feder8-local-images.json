@@ -2,7 +2,7 @@
   "components": [
     { "name": "postgres",
       "image": "postgres",
-      "tag":  "13-omopcdm-{cdm_version}-webapi-2.9.0-feb-2024",
+      "tag":  "13-omopcdm-{cdm_version}-webapi-2.9.0-2.0.3-feb-2024",
       "public": false
     },
     { "name": "config-server",
