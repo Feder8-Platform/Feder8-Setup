@@ -8,7 +8,7 @@
       "env-var": "DATA_FOLDER_HOST"
     },
     { "question": "Source data filename (without extension): ",
-      "env-var": "SOURCE_FILES",
+      "env-var": "SOURCE_FILE",
       "default-value": "gladel"
     },
     { "question": "Source data file extension: ",
@@ -20,8 +20,8 @@
       "default-value": ","
     },
     { "question": "Clinical tables schema: ",
-      "env-var": "DB_SCHEMA",
-      "default-value": "omopcdm_gladel_1"
+      "env-var": "CDM_SCHEMA",
+      "default-value": "omopcdm_gladel1"
     },
     { "question": "Vocabulary schema: ",
       "env-var": "VOCAB_SCHEMA",
