@@ -21,7 +21,7 @@
     },
     { "question": "Clinical tables schema: ",
       "env-var": "CDM_SCHEMA",
-      "default-value": "omopcdm_gladel1"
+      "default-value": "omopcdm_gladel_1"
     },
     { "question": "Vocabulary schema: ",
       "env-var": "VOCAB_SCHEMA",

@@ -35,7 +35,7 @@ echo "ETL_IMAGE_TAG=current" >> etl-runner.env
 echo "LOG_FOLDER_HOST=$LOG_FOLDER_HOST" >> etl-runner.env
 echo "LOG_FOLDER=/log" >> etl-runner.env
 # schemas 
-echo "DB_SCHEMA=$CDM_SCHEMA" >> etl-runner.env
+echo "CDM_SCHEMA=$CDM_SCHEMA" >> etl-runner.env
 echo "VOCAB_SCHEMA=$VOCAB_SCHEMA" >> etl-runner.env 
 # source data
 echo "DATA_FOLDER_HOST=$DATA_FOLDER_HOST" >> etl-runner.env
