@@ -19,7 +19,7 @@ docker pull $REGISTRY_ETL_RUNNER/$REPOSITORY_ETL_RUNNER/$IMAGE_ETL_RUNNER:$TAG_E
 
 REGISTRY=harbor.lupusnet.org
 REPOSITORY=etl-gladel-1.0
-CDM_SCHEMA=gladel1
+CDM_SCHEMA=omopcdm_gladel_1
 VOCAB_SCHEMA=omopcdm
 
 #echo "Download ETL questions"
