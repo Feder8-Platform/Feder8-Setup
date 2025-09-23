@@ -19,6 +19,7 @@ docker pull $REGISTRY_ETL_RUNNER/$REPOSITORY_ETL_RUNNER/$IMAGE_ETL_RUNNER:$TAG_E
 
 REGISTRY=harbor.lupusnet.org
 REPOSITORY=etl-gladel-1.0
+SOURCE_SCHEMA=source_gladel_1
 CDM_SCHEMA=omopcdm_gladel_1
 VOCAB_SCHEMA=omopcdm
 
@@ -35,6 +36,7 @@ echo "ETL_IMAGE_TAG=current" >> etl-runner.env
 echo "LOG_FOLDER_HOST=$LOG_FOLDER_HOST" >> etl-runner.env
 echo "LOG_FOLDER=/log" >> etl-runner.env
 # schemas 
+echo "SOURCE_SCHEMA=$SOURCE_SCHEMA" >> etl-runner.env
 echo "CDM_SCHEMA=$CDM_SCHEMA" >> etl-runner.env
 echo "VOCAB_SCHEMA=$VOCAB_SCHEMA" >> etl-runner.env 
 # source data

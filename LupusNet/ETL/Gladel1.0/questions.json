@@ -19,11 +19,15 @@
       "env-var": "DELIMITER",
       "default-value": ","
     },
-    { "question": "Clinical tables schema: ",
+    { "question": "Source table schema: ",
+      "env-var": "SOURCE_SCHEMA",
+      "default-value": "source_gladel_1"
+    },
+    { "question": "OMOP clinical tables schema: ",
       "env-var": "CDM_SCHEMA",
       "default-value": "omopcdm_gladel_1"
     },
-    { "question": "Vocabulary schema: ",
+    { "question": "OMOP vocabulary schema: ",
       "env-var": "VOCAB_SCHEMA",
       "default-value": "omopcdm"
     },
