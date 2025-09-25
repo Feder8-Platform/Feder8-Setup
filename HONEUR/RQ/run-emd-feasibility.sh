@@ -13,7 +13,7 @@ echo "Run EMD feasibility"
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 docker run --rm --name emd-feasibility \
 --env THERAPEUTIC_AREA=HONEUR \
---env SCRIPT_UUID=f45d86a7-8f2b-4ca6-bc33-2568aed2d8d4 \
+--env SCRIPT_UUID=bfdeebe2-a18c-488a-9bdb-ebb97a8e721e \
 --network feder8-net \
 -v $PWD/results/EMD:/script/results \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
