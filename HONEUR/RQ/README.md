@@ -9,6 +9,7 @@ Studies
 * [RQ1](#rq1)
 * [RQ3](#rq3)
 * [Landmark study](#landmark-study)
+* [EMD feasibility](#emd-feasibility)
 * [EMD study](#emd-study)
 * [PERIODIC study](#periodic-study)
 * [FHR study](#fhr-study)
@@ -58,6 +59,14 @@ Studies
      ```run-landmark-study.cmd```
 4. The script will run the Landmark study and show the output of the code
 
+## EMD feasibility
+### Execution steps
+1. Open a terminal window
+2. Download the run script:
+    * ```curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-emd-feasibility.sh --output run-emd-feasibility.sh  && chmod +x run-emd-feasibility.sh```
+3. Execute the script (from the directory where the script is downloaded)
+    * ```./run-emd-feasibility.sh```
+4. The script will run the EMD feasibility and show the output of the code
 
 ## EMD study
 ### Execution steps
