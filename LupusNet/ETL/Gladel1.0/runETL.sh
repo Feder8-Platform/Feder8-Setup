@@ -38,6 +38,7 @@ echo "LOG_FOLDER=/log" >> etl-runner.env
 # schemas 
 echo "SOURCE_SCHEMA=$SOURCE_SCHEMA" >> etl-runner.env
 echo "CDM_SCHEMA=$CDM_SCHEMA" >> etl-runner.env
+echo "DB_SCHEMA=$CDM_SCHEMA" >> etl-runner.env
 echo "VOCAB_SCHEMA=$VOCAB_SCHEMA" >> etl-runner.env 
 # source data
 echo "DATA_FOLDER_HOST=$DATA_FOLDER_HOST" >> etl-runner.env
