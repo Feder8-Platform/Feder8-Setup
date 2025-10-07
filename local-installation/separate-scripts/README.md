@@ -90,7 +90,6 @@ Once done, the script will download the Zeppelin docker image and will create th
 
 
 ## Distributed Analytics installation instructions
-:warning: Distributed Analytics requires you to install the [Zeppelin](#zeppelin-installation-instructions) component.
 
 Distributed Analytics can be installed by downloading and running the installation script.
 
