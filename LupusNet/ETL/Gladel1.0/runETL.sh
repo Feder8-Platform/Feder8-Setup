@@ -48,6 +48,7 @@ echo "FILE_TYPE=csv" >> etl-runner.env
 # QA and DQD
 echo "QA_FOLDER_HOST=$QA_FOLDER_HOST" >> etl-runner.env
 echo "QA_FOLDER_ETL=/script/etl/gladel1/reports" >> etl-runner.env
+echo "RELEASE_DATE=2025-04-15" >> etl-runner.env
 echo "RUN_DQD=false" >> etl-runner.env
 
 echo "Run ETL"
