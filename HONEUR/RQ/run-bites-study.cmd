@@ -3,7 +3,7 @@
 SET REGISTRY=harbor.honeur.org
 SET REPOSITORY=script
 SET IMAGE=bites-study
-SET VERSION=20251008
+SET VERSION=20251009
 SET TAG=%VERSION%
 
 echo "Docker login @ %REGISTRY%"
