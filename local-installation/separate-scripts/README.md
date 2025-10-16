@@ -102,7 +102,7 @@ curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/l
 
 Windows
 ```
-curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/distributed-analytics.cmd --output start-distributed-analytics.cmd
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-distributed-analytics.cmd --output start-distributed-analytics.cmd
 ```
 
 2. Run this script using the following command:
