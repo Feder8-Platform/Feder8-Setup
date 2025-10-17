@@ -7,12 +7,12 @@
     },
     { "name": "postgres-restore-17",
       "image": "postgres",
-      "tag":  "17-omopcdm-{cdm_version}-slim",
+      "tag":  "17-omopcdm-base",
       "public": false
     },
     { "name": "postgres-restore-13",
       "image": "postgres",
-      "tag":  "13-omopcdm-{cdm_version}-webapi-2.9.0-2.0.11-slim",
+      "tag":  "13-omopcdm-base",
       "public": false
     },
     { "name": "config-server",
