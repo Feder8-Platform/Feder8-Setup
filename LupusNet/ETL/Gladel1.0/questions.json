@@ -17,7 +17,7 @@
     },
     { "question": "Delimiter of the source file: ",
       "env-var": "DELIMITER",
-      "default-value": ","
+      "default-value": ";"
     },
     { "question": "Source table schema: ",
       "env-var": "SOURCE_SCHEMA",
