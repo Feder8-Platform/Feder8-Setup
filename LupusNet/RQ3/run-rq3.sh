@@ -13,7 +13,7 @@ echo "Pull image"
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
 docker run --rm --name lupusnet-rq3 \
---env THERAPEUTIC_AREA=lupus --env SCRIPT_UUID=e93de7eb-cd45-4f9e-ba57-36a718413999 \
+--env THERAPEUTIC_AREA=lupus --env SCRIPT_UUID=47441017-7c7a-4645-9751-f2c2bb1ddf60 \
 -v $PWD/results:/script/results \
 --network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
