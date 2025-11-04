@@ -15,7 +15,7 @@
     * Linux:
       ```./run-rq3.sh```
     * Windows:
-      ```run-r3.cmd```
+      ```run-rq3.cmd```
 4. The script will run RQ3 and show the output of the code
 5. The result file will be available in a subfolder 'results'
 
