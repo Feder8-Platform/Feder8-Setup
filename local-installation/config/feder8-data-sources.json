@@ -3,7 +3,7 @@
     { "name": "honeur",
       "domain":  "honeur.org",
       "data_sources": ["AIDA", "ASST Legnano", "cardiff_etl", "CCL", "RHEMCO" ,"CHU_LILLE", "CHU_MONTPELLIER", "CLLEAR", "EMMOS", "GMV", "h12o", "HULAFE", "IMASIS", "IOMEDICO_MYRIAM", "IRCCS_POLIMI", "IRST_Meldola", "IUCT", "MUMC", "Oncotyrol-AMR", "RMG", "SMC", "TriNetX", "UHL", "UZ Leuven", "Wurzburg", "Zaragosa"],
-      "prd_data_sources": ["ASST Legnano", "cardiff_etl", "CCL", "CHU_LILLE", "CHU_MONTPELLIER", "HULAFE", "IRST_Meldola", "IUCT", "RHEMCO", "RMG", "SMC", "TriNetX", "UHL", "UZ Leuven", "Wurzburg"],
+      "prd_data_sources": ["ASST Legnano", "cardiff_etl", "CCL", "CHU_LILLE", "CHU_MONTPELLIER", "HULAFE", "IMASIS", "IRST_Meldola", "IUCT", "RHEMCO", "RMG", "SMC", "TriNetX", "UHL", "UZ Leuven", "Wurzburg"],
       "deprecated_data_sources": ["OIS_TM_MM", "Sourasky", "LEGN"]
     },
     { "name": "phederation",
