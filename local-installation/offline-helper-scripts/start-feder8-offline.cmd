@@ -1,6 +1,6 @@
 @ECHO off
 
-SET TAG=2.2.4
+SET TAG=2.3.0
 SET PYTHON_VERSION=3.11
 SET REGISTRY=harbor.honeur.org
 
