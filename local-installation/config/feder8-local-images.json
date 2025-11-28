@@ -2,7 +2,7 @@
   "components": [
     { "name": "postgres",
       "image": "postgres",
-      "tag":  "13-omopcdm-{cdm_version}-webapi-2.9.0-feb-2024",
+      "tag":  "13-omopcdm-{cdm_version}-webapi-2.9.0-2.0.3-feb-2024",
       "public": false
     },
     { "name": "postgres-restore-17",
@@ -27,7 +27,7 @@
     },
     { "name": "local-portal",
       "image": "local-portal",
-      "tag":  "2.1.3",
+      "tag":  "2.1.5",
       "public": false
     },
     { "name": "user-mgmt",
@@ -57,12 +57,12 @@
     },
     { "name": "distributed-analytics-remote",
       "image": "distributed-analytics",
-      "tag":  "remote-2.1.0",
+      "tag":  "remote-2.1.2",
       "public": false
     },
     { "name": "feder8-studio",
       "image": "feder8-studio",
-      "tag":  "2.1.3",
+      "tag":  "2.1.4",
       "public": false
     },
     { "name": "vs-code-server",

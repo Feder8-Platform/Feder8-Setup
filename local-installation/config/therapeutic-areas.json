@@ -4,7 +4,7 @@
       "light_theme_color": "#0794e0",
       "dark_theme_color": "#002562",
       "domain":  "honeur.org",
-      "organizations": ["AIDA","CAV","CCL","CHU Dijon","CHU Lille","CHU Montpellier","CLLEAR","EMMOS","GMV","H12O","iOMEDICO","IUCT","Janssen","Oncotyrol","RMG","Sourasky","TriNetX","UHL","Wurzburg","Zaragosa"],
+      "organizations": ["AIDA","ASST Ovest Milanese - Legnano","CAV","CCL","CHU Dijon","CHU Lille","CHU Montpellier","CLLEAR","EMMOS","GMV","H12O","HULAFE","IMASIS","iOMEDICO","IRST","IUCT","Janssen","Legnano","Milano","Oncocologne","Oncotyrol","RMG","Sourasky","TriNetX","UHL","UZ Leuven MM","Wurzburg","Zaragosa"],
       "test_organizations": ["TestOrg1", "TestOrg2", "TestOrg3", "TestOrg4", "TestOrg5", "TestOrg6"],
       "cdm_version": "5.3.1"
     },

@@ -26,7 +26,8 @@ echo "01b. Stop and remove authorization broker container if exists"
 docker stop authz-broker > /dev/null 2>&1 || true
 docker rm authz-broker > /dev/null 2>&1 || true
 echo "01c. Start authorization broker container"
-docker run -d  --name "authz-broker" --restart=always -v $CERTIFICATE_FOLDER/policy.json:/var/lib/authz-broker/policy.json -v /run/docker/plugins/:/run/docker/plugins twistlock/authz-broker
+docker pull harbor.honeur.org/library/authz-broker:latest
+docker run -d  --name "authz-broker" --restart=always -v $CERTIFICATE_FOLDER/policy.json:/var/lib/authz-broker/policy.json -v /run/docker/plugins/:/run/docker/plugins harbor.honeur.org/library/authz-broker:latest
 
 if ! command -v systemctl &> /dev/null
 then
