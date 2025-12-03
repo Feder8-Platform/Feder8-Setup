@@ -11,7 +11,7 @@ docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
 start=$(date +%s)
 
-docker run --rm --name periodic-study \
+docker run --name periodic-study-$start \
 --env THERAPEUTIC_AREA=HONEUR --env DB_ANALYSIS_TABLE_NAME=analysis_table \
 --env SCRIPT_UUID=5d1b4000-e556-469d-a6c5-d165d013ba47 \
 -v $PWD/results:/script/results \
