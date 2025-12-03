@@ -1,6 +1,6 @@
 @ECHO off
 
-SET TAG=2.2.5
+SET TAG=2.3.0
 SET REGISTRY=harbor.honeur.org
 
 set "ORGANIZATION="
