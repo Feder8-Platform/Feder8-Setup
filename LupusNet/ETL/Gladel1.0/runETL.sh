@@ -42,7 +42,7 @@ echo "DB_SCHEMA=$CDM_SCHEMA" >> etl-runner.env
 echo "VOCAB_SCHEMA=$VOCAB_SCHEMA" >> etl-runner.env 
 # source data
 echo "DATA_FOLDER_HOST=$DATA_FOLDER_HOST" >> etl-runner.env
-echo "DATA_FOLDER=/source" >> etl-runner.env
+echo "DATA_FOLDER=/data" >> etl-runner.env
 echo "ENCODING=utf-8" >> etl-runner.env
 echo "FILE_TYPE=csv" >> etl-runner.env
 # QA and DQD

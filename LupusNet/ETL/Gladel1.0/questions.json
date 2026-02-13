@@ -7,9 +7,17 @@
     { "question": "Source data folder: ",
       "env-var": "DATA_FOLDER_HOST"
     },
-    { "question": "Source data filename (without extension): ",
-      "env-var": "SOURCE_FILE",
+    { "question": "Main source data filename (without extension): ",
+      "env-var": "GLADEL",
       "default-value": "gladel"
+    },
+    { "question": "SLEDAI source data filename (without extension): ",
+      "env-var": "SLEDAI",
+      "default-value": "sledai"
+    },
+    { "question": "SLICC source data filename (without extension): ",
+      "env-var": "SLICC",
+      "default-value": "slicc"
     },
     { "question": "Source data file extension: ",
       "env-var": "FILE_TYPE",
