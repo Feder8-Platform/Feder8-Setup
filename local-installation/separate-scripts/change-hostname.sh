@@ -19,4 +19,4 @@ fi
 
 docker pull ${REGISTRY}/${REPOSITORY}/${IMAGE}:${TAG}
 
-docker run --rm -it --name feder8-installer -e CURRENT_DIRECTORY=${PWD} -e IS_WINDOWS=false -e IS_MAC=$IS_MAC -e DOCKER_CERT_SUPPORT=$DOCKER_CERT_SUPPORT -e ENVIRONMENT=PRD -v /var/run/docker.sock:/var/run/docker.sock -v ./info_feder8_installation:/usr/local/lib/python3.11/site-packages/feder8-${TAG}-py3.11.egg/cli/info_feder8_installation ${REGISTRY}/${REPOSITORY}/${IMAGE}:${TAG} feder8 init change-hostname
+docker run --rm -it --name feder8-installer -e CURRENT_DIRECTORY=${PWD} -e IS_WINDOWS=false -e IS_MAC=$IS_MAC -e DOCKER_CERT_SUPPORT=$DOCKER_CERT_SUPPORT -e ENVIRONMENT=PRD -v /var/run/docker.sock:/var/run/docker.sock -v ./info_feder8_installation:/opt/install-script/info_feder8_installation ${REGISTRY}/${REPOSITORY}/${IMAGE}:${TAG} feder8 init change-hostname
