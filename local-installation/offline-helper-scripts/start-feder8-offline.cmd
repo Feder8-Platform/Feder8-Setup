@@ -1,7 +1,7 @@
 @ECHO off
 
 
-SET TAG=2.3.0
+SET TAG=2.3.1
 SET PYTHON_VERSION=3.11
 SET REGISTRY=harbor.honeur.org
 
@@ -15,7 +15,7 @@ if exist images.tar (
         if exist feder8-local-images.json (
             echo Loading docker images. This could take a while...
             docker load -i images.tar
-            docker run --rm -it --name feder8-installer -e CURRENT_DIRECTORY=%CD% -e IS_WINDOWS=true -e DOCKER_CERT_SUPPORT=false -v ./therapeutic-areas.json:%THERAPEUTIC_AREA_JSON_PATH% -v ./feder8-local-images.json:%FEDER8_LOCAL_IMAGE_JSON_PATH% -v /var/run/docker.sock:/var/run/docker.sock %REGISTRY%/library/install-script:%TAG% feder8 init --offline full
+            docker run --rm -it --name feder8-installer -e CURRENT_DIRECTORY=%CD% -e IS_WINDOWS=true -e DOCKER_CERT_SUPPORT=false -v ./therapeutic-areas.json:%THERAPEUTIC_AREA_JSON_PATH% -v ./feder8-local-images.json:%FEDER8_LOCAL_IMAGE_JSON_PATH% -v /var/run/docker.sock:/var/run/docker.sock -v ./info_feder8_installation:/opt/install-script/info_feder8_installation %REGISTRY%/library/install-script:%TAG% feder8 init --offline full
         )
     )
 ) else (
