@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TAG=2.3.0
+TAG=2.3.1
 REGISTRY=harbor.honeur.org
 
 DOCKER_HOST_CONFIG="${DOCKER_HOST_CONFIG:-172.17.0.1}"
