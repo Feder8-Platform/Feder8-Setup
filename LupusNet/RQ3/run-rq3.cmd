@@ -2,8 +2,8 @@
 
 SET REGISTRY=harbor.lupusnet.org
 SET REPOSITORY=distributed-analytics
-SET IMAGE=rq3
-SET TAG=1.1.0
+SET IMAGE=rq3-feasibility
+SET TAG=1.0.0
 
 echo "Docker login @ %REGISTRY%"
 docker login %REGISTRY%
