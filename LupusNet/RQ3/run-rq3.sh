@@ -12,11 +12,15 @@ docker login $REGISTRY
 echo "Pull image"
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
 
+mkdir -p $PWD/results
+touch $PWD/results/errorReportSql.txt
+
 docker run --rm --name lupusnet-rq3 \
 --memory-swap -1 \
 --env THERAPEUTIC_AREA=lupus \
 --env ANDROMEDA_TEMP_FOLDER=/tmp/andromeda \
 --env SCRIPT_UUID=9ca7c005-1a6c-4908-9e37-4079e7c07991 \
 -v $PWD/results:/script/results \
+-v $PWD/results/errorReportSql.txt:/errorReportSql.txt \
 --network feder8-net \
 $REGISTRY/$REPOSITORY/$IMAGE:$TAG
