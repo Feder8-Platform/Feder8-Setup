@@ -4,7 +4,7 @@ set -eux
 REGISTRY=harbor.lupusnet.org
 REPOSITORY=distributed-analytics
 IMAGE=rq3-feasibility
-TAG=1.0.3
+TAG=1.0.4
 
 echo "Docker login @ $REGISTRY"
 docker login $REGISTRY
