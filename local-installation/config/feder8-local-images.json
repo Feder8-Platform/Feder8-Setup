@@ -248,12 +248,12 @@
     },
     { "name": "keycloak",
       "image": "keycloak",
-      "tag":  "22.0.5-1.0.1",
+      "tag":  "26.6.2-1.0.0",
       "public": false
     },
     { "name": "keycloak-config-updater",
       "image": "keycloak-config-updater",
-      "tag":  "1.0.0",
+      "tag":  "1.0.1",
       "public": false
     },
     { "name": "postgres-scratch-initialize-schema",
