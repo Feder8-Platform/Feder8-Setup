@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 REGISTRY=harbor.honeur.org
-VERSION="2.3.3"
+VERSION="2.3.4"
 TAG=$VERSION
 
 DOCKER_HOST_CONFIG="${DOCKER_HOST_CONFIG:-172.17.0.1}"

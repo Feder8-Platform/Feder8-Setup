@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TAG=2.3.3
+TAG=2.3.4
 REGISTRY=harbor.honeur.org
 
 echo "Downloading configuration files..."

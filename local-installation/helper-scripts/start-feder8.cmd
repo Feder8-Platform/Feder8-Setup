@@ -1,6 +1,6 @@
 @ECHO off
 
-SET TAG=2.3.3
+SET TAG=2.3.4
 SET REGISTRY=harbor.honeur.org
 SET DOCKER_HOST_CONFIG=172.17.0.1
 
