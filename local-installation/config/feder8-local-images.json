@@ -151,6 +151,11 @@
       "tag":  "1.0",
       "public": false
     },
+    { "name": "postgres-cross-schema-foreign-keys",
+      "image": "postgres-cross-schema-foreign-keys",
+      "tag":  "1.0",
+      "public": false
+    },
     { "name": "postgres-delete-foreign-keys",
       "image": "postgres-delete-foreign-keys",
       "tag":  "1.0",
