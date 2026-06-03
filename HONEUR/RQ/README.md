@@ -12,6 +12,7 @@ Studies
 * [EMD feasibility](#emd-feasibility)
 * [EMD study](#emd-study)
 * [PERIODIC study](#periodic-study)
+* [REWARD study](#reward-study)
 * [FHR study](#fhr-study)
 * [Octogenarian study](#octogenarian-study)
 * [BiTeS study](#bites-study)
@@ -116,7 +117,20 @@ Studies
    ```
    ./run-periodic-study.sh
    ```
-4. The script will run the EMD study and show the output of the code
+4. The script will run the PERIODIC study and show the output of the code
+
+## REWARD study
+### Execution steps
+1. Open a terminal window
+2. Download the run script:
+   ```
+   curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-reward-study.sh --output run-reward-study.sh  && chmod +x run-reward-study.sh
+   ```
+3. Execute the script (from the directory where the script is downloaded)
+   ```
+   ./run-reward-study.sh
+   ```
+4. The script will run the REWARD study and show the output of the code
 
 ## FHR study
 ### Execution steps
