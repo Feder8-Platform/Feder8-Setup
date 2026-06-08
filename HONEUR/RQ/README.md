@@ -12,6 +12,7 @@ Studies
 * [EMD feasibility](#emd-feasibility)
 * [EMD study](#emd-study)
 * [PERIODIC study](#periodic-study)
+* [PERIODIC study ASH2026](#periodic-study-ash2026)
 * [REWARD study](#reward-study)
 * [FHR study](#fhr-study)
 * [Octogenarian study](#octogenarian-study)
@@ -116,6 +117,19 @@ Studies
 3. Execute the script (from the directory where the script is downloaded)
    ```
    ./run-periodic-study.sh
+   ```
+4. The script will run the PERIODIC study and show the output of the code
+
+## PERIODIC study ASH2026
+### Execution steps
+1. Open a terminal window
+2. Download the run script:
+   ```
+   curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/HONEUR/RQ/run-periodic-study-ash2026.sh --output run-periodic-study-ash2026.sh  && chmod +x run-periodic-study-ash2026.sh
+   ```
+3. Execute the script (from the directory where the script is downloaded)
+   ```
+   ./run-periodic-study-ash2026.sh
    ```
 4. The script will run the PERIODIC study and show the output of the code
 
