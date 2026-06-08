@@ -4,7 +4,7 @@ set -ex
 REGISTRY=harbor.honeur.org
 REPOSITORY=script
 IMAGE=reward-study
-VERSION=20260603
+VERSION=20260608
 TAG=$VERSION
 
 docker pull $REGISTRY/$REPOSITORY/$IMAGE:$TAG
