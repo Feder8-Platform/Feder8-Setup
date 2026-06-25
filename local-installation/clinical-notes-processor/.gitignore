@@ -1,0 +1,3 @@
+# Never commit secrets or patient data to this public repo.
+.env
+notes/

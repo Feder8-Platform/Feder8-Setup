@@ -1,0 +1,41 @@
+# Clinical Notes Processor — runs the pre-built image from the HONEUR registry.
+# No source code is needed. See README.md for full installation steps.
+name: clinical-notes-processor
+
+services:
+  clinical-api:
+    # The published image. Override the version via CLINICAL_IMAGE in .env.
+    image: ${CLINICAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.1.0}
+    pull_policy: always
+    environment:
+      - OLLAMA_HOST=${OLLAMA_HOST}
+      - CLINICAL_OLLAMA_MODEL=${CLINICAL_OLLAMA_MODEL:-qwen3:8b}
+      - CLINICAL_NOTES_DIR=/data/notes
+      - CLINICAL_DB_PATH=/data/registry/registry.db
+    volumes:
+      # Patient notes, mounted read-only. Put one subfolder per patient under this host folder.
+      - ${CLINICAL_NOTES_HOST_DIR:-./notes}:/data/notes:ro
+      - registry-data:/data/registry
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    depends_on:
+      - clinical-api
+    environment:
+      - OPENAI_API_BASE_URL=http://clinical-api:8000/v1
+      - OPENAI_API_KEY=local
+      - ENABLE_OLLAMA_API=false
+      - WEBUI_AUTH=true
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
+    volumes:
+      - open-webui-data:/app/backend/data
+    ports:
+      - "3000:8080"
+    restart: unless-stopped
+
+volumes:
+  registry-data:
+  open-webui-data:
