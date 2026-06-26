@@ -66,7 +66,7 @@ You need a Linux server with:
   the GPU). If it doesn't, install the NVIDIA drivers first.
 - **Docker Engine + the Docker Compose plugin.** Confirm with `docker --version && docker compose
   version`. If missing, install from <https://docs.docker.com/engine/install/>.
-- **git** (`sudo apt-get install -y git` on Debian/Ubuntu).
+- **`curl`** (almost always preinstalled; `sudo apt-get install -y curl` on Debian/Ubuntu if not).
 - A **valid HONEUR account.** The application image is hosted in the HONEUR registry; you need an
   account to download it. (Use the same credentials as for the rest of the Feder8 / HONEUR setup.)
 - **Logged in to the HONEUR registry** so Docker can pull the image:
@@ -120,13 +120,21 @@ Both models fit comfortably in the T4's 16 GB of GPU memory together.
 
 ## Step 3 — Get these installation files
 
+You only need the files in the `clinical-notes-processor` folder. Download them with `curl` — no
+git required:
+
 ```bash
-git clone https://github.com/Feder8-Platform/Feder8-Setup.git
-cd Feder8-Setup/local-installation/clinical-notes-processor
+mkdir clinical-notes-processor && cd clinical-notes-processor
+base="https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/clinical-notes-processor"
+for f in README.md docker-compose.yml .env.example run-evaluation.sh EVALUATION.md; do
+  curl -fsSL "$base/$f" -o "$f"
+done
+chmod +x run-evaluation.sh
 ```
 
-This folder contains `docker-compose.yml` and `.env.example` — everything needed to run the
-application. No application source code is required.
+This folder contains `docker-compose.yml`, `.env.example`, and the evaluation tools
+(`run-evaluation.sh`, `EVALUATION.md`) — everything needed to run and validate the application.
+No application source code is required.
 
 ## Step 4 — Add the patient notes
 
@@ -214,6 +222,15 @@ clinical model (`clinical-notes-model`) is already connected as the model provid
 plain language; answers come back with the source passages they are based on.
 
 > Only port **3000** (the web UI) needs to be reachable by users. Port 8000 is the internal API.
+
+---
+
+## Validating the install (recommended)
+
+Before relying on the system, you can run a built-in, fully synthetic check that confirms the AI
+models fit in the GPU's 16 GB, that the system stays grounded (never invents facts), and how fast it
+is on your hardware. It uses an isolated test record and never touches your real notes. See
+**[EVALUATION.md](EVALUATION.md)**.
 
 ---
 
