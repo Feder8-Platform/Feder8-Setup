@@ -126,15 +126,16 @@ git required:
 ```bash
 mkdir clinical-notes-processor && cd clinical-notes-processor
 base="https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/clinical-notes-processor"
-for f in README.md docker-compose.yml .env.example run-evaluation.sh EVALUATION.md; do
+for f in README.md docker-compose.yml .env.example run-evaluation.sh EVALUATION.md \
+         run-loadtest.sh LOAD_TEST.md; do
   curl -fsSL "$base/$f" -o "$f"
 done
-chmod +x run-evaluation.sh
+chmod +x run-evaluation.sh run-loadtest.sh
 ```
 
 This folder contains `docker-compose.yml`, `.env.example`, and the evaluation tools
-(`run-evaluation.sh`, `EVALUATION.md`) — everything needed to run and validate the application.
-No application source code is required.
+(`run-evaluation.sh`, `EVALUATION.md`, `run-loadtest.sh`, `LOAD_TEST.md`) — everything needed to run
+and validate the application. No application source code is required.
 
 ## Step 4 — Add the patient notes
 
@@ -231,6 +232,11 @@ Before relying on the system, you can run a built-in, fully synthetic check that
 models fit in the GPU's 16 GB, that the system stays grounded (never invents facts), and how fast it
 is on your hardware. It uses an isolated test record and never touches your real notes. See
 **[EVALUATION.md](EVALUATION.md)**.
+
+Once that passes, you can also check how the system behaves when **several people ask questions at
+the same time** — does it just queue them up (fine), or do answers start breaking under load? This
+uses a second, temporary, isolated copy of the application, so your running instance and real data
+are never touched. See **[LOAD_TEST.md](LOAD_TEST.md)**.
 
 ---
 
