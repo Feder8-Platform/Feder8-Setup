@@ -5,7 +5,7 @@ name: clinical-notes-processor
 services:
   clinical-api:
     # The published image. Override the version via CLINICAL_IMAGE in .env.
-    image: ${CLINICAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.1.0}
+    image: ${CLINICAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.3.0-rc1}
     pull_policy: always
     environment:
       - OLLAMA_HOST=${OLLAMA_HOST}

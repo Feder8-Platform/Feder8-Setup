@@ -18,7 +18,7 @@ known set of planted facts (and some deliberately absent ones). **No real patien
 and your real notes and search index are never touched.** The test runs in its own isolated scratch
 area.
 
-> **The evaluation runs against the `0.2.0-rc1` candidate image automatically.** The script pins
+> **The evaluation runs against the `0.3.0-rc1` candidate image automatically.** The script pins
 > that image for its own steps only — it does **not** change the image your application serves via
 > `docker compose up`, which stays on the stable release. Nothing to configure here. (To validate a
 > different build, run `EVAL_IMAGE=<image:tag> ./run-evaluation.sh`.)
@@ -54,10 +54,10 @@ does, in order.
 ## Step A — Create an isolated scratch area
 
 Pin the candidate image for this terminal session — the script does this automatically; a manual
-run needs it so the eval uses `0.2.0-rc1` and not your production image:
+run needs it so the eval uses `0.3.0-rc1` and not your production image:
 
 ```bash
-export CLINICAL_IMAGE=harbor.honeur.org/honeur/clinical-notes-processor:0.2.0-rc1
+export CLINICAL_IMAGE=harbor.honeur.org/honeur/clinical-notes-processor:0.3.0-rc1
 ```
 
 The evaluation writes a generated test corpus, a temporary index, and the gold answers into a

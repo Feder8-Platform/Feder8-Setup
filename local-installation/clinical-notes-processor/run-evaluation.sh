@@ -52,7 +52,7 @@ fi
 # `docker compose up`, which keeps the default in docker-compose.yml / your .env. Leave
 # CLINICAL_IMAGE commented in .env so production stays on the stable release. Override the
 # candidate with:  EVAL_IMAGE=... ./run-evaluation.sh
-export CLINICAL_IMAGE="${EVAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.2.0-rc1}"
+export CLINICAL_IMAGE="${EVAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.3.0-rc1}"
 
 # These options redirect every path the tools use into the isolated scratch volume,
 # so production notes (read-only) and the production registry are left untouched.
@@ -71,7 +71,7 @@ echo "    version: ${ver}"
 case "${ver}" in
   0.0.*|0.1.*)
     echo "ERROR: image is ${ver}, but the evaluation needs >= 0.2.0." >&2
-    echo "       Pin CLINICAL_IMAGE to :0.2.0-rc1 (or later) in .env, run 'docker compose pull', and retry." >&2
+    echo "       Pin CLINICAL_IMAGE to :0.3.0-rc1 (or later) in .env, run 'docker compose pull', and retry." >&2
     echo "       See EVALUATION.md." >&2
     exit 1 ;;
 esac

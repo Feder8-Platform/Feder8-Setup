@@ -50,7 +50,7 @@ if [ ! -f .env ]; then
 fi
 
 # Candidate image with the load-test tool. Override with EVAL_IMAGE=... ./run-loadtest.sh
-export CLINICAL_IMAGE="${EVAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.2.0-rc2}"
+export CLINICAL_IMAGE="${EVAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.3.0-rc1}"
 docker pull "${CLINICAL_IMAGE}" >/dev/null
 
 echo "==> Checking the image has the load-test tool"
