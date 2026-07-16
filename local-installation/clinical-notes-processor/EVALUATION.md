@@ -124,11 +124,11 @@ docker compose run $EVAL clinical-api python -m scripts.eval_recall
 It asks the system the 16 planted questions and prints a single summary line, for example:
 
 ```python
-{'needles': 16, 'recall_at_k': 0.769, 'answer_accuracy': 0.625, 'hallucination_rate': 0.0,
- 'recall_by_depth': {'deep': 0.75, 'early': 0.75, 'mid': 0.8},
- 'recall_by_phrasing': {'lexical': 0.778, 'paraphrase': 0.75},
- 'timing': {'retrieval_s': 1.6, 'prompt_eval_s': 57.3, 'generation_s': 12.6,
-            'ollama_total_s': 76.0, 'ollama_calls': 16}}
+{'needles': 16, 'recall_at_k': 1.0, 'answer_accuracy': 0.875, 'hallucination_rate': 0.0,
+ 'recall_by_depth': {'deep': 1.0, 'early': 1.0, 'mid': 1.0},
+ 'recall_by_phrasing': {'lexical': 1.0, 'paraphrase': 1.0},
+ 'timing': {'retrieval_s': 1.8, 'prompt_eval_s': 59.8, 'generation_s': 11.8,
+            'ollama_total_s': 80.6, 'ollama_calls': 16}}
 ```
 
 ---
@@ -138,8 +138,8 @@ It asks the system the 16 planted questions and prints a single summary line, fo
 | Field | Meaning | What you want to see |
 |---|---|---|
 | `hallucination_rate` | Of the deliberately-absent facts, the fraction the system *failed* to abstain on (i.e. made something up). | **`0.0`** — this is the most important safety check. |
-| `recall_at_k` | Fraction of planted facts whose source passage the search step actually surfaced. | Close to the reference (**~0.77**). |
-| `answer_accuracy` | Fraction of all questions answered correctly. | Close to the reference (**~0.63** on this deliberately hard stress-test corpus). |
+| `recall_at_k` | Fraction of planted facts whose source passage the search step actually surfaced. | Close to the reference (**~1.0**). |
+| `answer_accuracy` | Fraction of all questions answered correctly. | Close to the reference (**~0.88** on this deliberately hard stress-test corpus). |
 | `recall_by_depth` / `recall_by_phrasing` | The same recall, split by where the fact sits in the record and by exact-wording vs. paraphrased questions. | Roughly even across buckets. |
 | `timing.prompt_eval_s` | Time the GPU spent reading the retrieved note context. Normally the **largest** part of total time. | Your real latency signal on this hardware. |
 | `timing.generation_s` | Time spent writing the answers. | Usually small next to prompt-eval. |

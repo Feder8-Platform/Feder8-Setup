@@ -44,8 +44,8 @@ to tens of seconds on its own, so concurrency multiplies wall-clock time, not GP
 The script prints a summary line when it finishes, for example:
 
 ```python
-{'requests': 16, 'concurrency': 2, 'wall_s': 257.2, 'errors': 0, 'accuracy': 0.625,
- 'hallucination_rate': 0.0, 'latency_s': {'mean': 31.3, 'median': 29.3, 'max': 42.8}}
+{'requests': 32, 'concurrency': 2, 'wall_s': 131.4, 'errors': 0, 'accuracy': 0.75,
+ 'hallucination_rate': 0.0, 'latency_s': {'mean': 8.2, 'median': 9.9, 'max': 15.3}}
 ```
 
 To keep the scratch volume afterwards (e.g. to debug a failure), run `KEEP_EVAL_DATA=1
@@ -59,7 +59,7 @@ To keep the scratch volume afterwards (e.g. to debug a failure), run `KEEP_EVAL_
 |---|---|---|
 | `errors` | Requests that failed or timed out. | **`0`**. |
 | `hallucination_rate` | Same measure as `EVALUATION.md` — did any deliberately-absent fact get invented under load. | **`0.0`** — this is the most important safety check. |
-| `accuracy` | Fraction of the 16 questions answered correctly, across every concurrent/repeated call. | Close to the reference from `EVALUATION.md` (**~0.63**). A drop here, with `errors: 0`, would mean answers are flipping under load rather than failing loudly. |
+| `accuracy` | Fraction of the 16 questions answered correctly, across every concurrent/repeated call. | Close to the reference from `EVALUATION.md` (**~0.88**). A drop here, with `errors: 0`, would mean answers are flipping under load rather than failing loudly. |
 | `latency_s.mean` / `median` / `max` | Real per-question wall-clock time while `CONCURRENCY` questions were in flight together. | This is your **throughput signal**, not pass/fail. Expect it to be noticeably higher than a single question in isolation (the GPU is serializing the concurrent requests) — that's normal. A number that keeps climbing far beyond a roughly linear multiple of the single-question latency is worth investigating. |
 | any listed "answered incorrectly under load" / "hallucination(s) under load" | The specific questions affected. | Compare against `EVALUATION.md`'s run: if the **same** questions are wrong both times, that's the known baseline, not a new problem. If **different or additional** questions are wrong only under concurrency, that is a load-specific issue worth reporting. |
 
@@ -67,7 +67,7 @@ To keep the scratch volume afterwards (e.g. to debug a failure), run `KEEP_EVAL_
 
 1. **`errors` is `0`** — the server stayed up and responsive throughout.
 2. **`hallucination_rate` is `0.0`.**
-3. **`accuracy` stays near the `EVALUATION.md` reference (~0.63)** and the same questions are wrong
+3. **`accuracy` stays near the `EVALUATION.md` reference (~0.88)** and the same questions are wrong
    as in the single-question evaluation — nothing new breaks specifically under concurrent load.
 
 If any of these fail, latency and stability under real multi-user traffic are not yet acceptable

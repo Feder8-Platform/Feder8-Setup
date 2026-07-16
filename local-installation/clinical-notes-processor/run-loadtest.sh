@@ -129,4 +129,4 @@ scratch -e CLINICAL_RECALL_GOLD_PATH=/eval/recall_gold/needles.csv -v "${VOLUME}
 echo ""
 echo "Done. Interpret the summary line above using LOAD_TEST.md ('How to read the result')."
 echo "It passes if: no errors, hallucination_rate stays 0.0, and accuracy stays near the serial"
-echo "reference (~0.63, from EVALUATION.md) — i.e. nothing flips or breaks under concurrent load."
+echo "reference (~0.88, from EVALUATION.md) — i.e. nothing flips or breaks under concurrent load."
