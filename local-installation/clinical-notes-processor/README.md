@@ -95,7 +95,15 @@ In the editor that opens, add these lines, then save and close:
 ```ini
 [Service]
 Environment="OLLAMA_HOST=0.0.0.0:11434"
+Environment="OLLAMA_NUM_PARALLEL=1"
 ```
+
+`OLLAMA_NUM_PARALLEL=1` serializes requests instead of letting Ollama run several at once.                                                                                                                     
+Concurrent requests share the GPU's memory for their working context, and letting more than one                                                                                                                
+run at a time risks Ollama silently shrinking that context to make them fit — which for this                                                                                                                   
+application means a real risk of the model quietly not seeing the full notes it needs, not just a                                                                                                              
+slowdown. With this pinned, concurrent users simply queue a few seconds behind each other, which is                                                                                                            
+fine for the number of simultaneous users this system expects.                
 
 Apply and confirm:
 
