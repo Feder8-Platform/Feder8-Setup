@@ -9,14 +9,14 @@
 ### Gladel 1.0 
 
 1. Open a terminal window
-2. Download the 'RQ3' run script:
+2. Download the 'RQ3 treatment trajectories' run script:
    ```
-   curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/RQ3/run-rq3-gladel-1.0.sh --output run-rq3-gladel-1.0.sh  && chmod +x run-rq3-gladel-1.0.sh
+   curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/RQ3/run-rq3-treatment-trajectories-gladel-1.0.sh --output run-rq3-treatment-trajectories-gladel-1.0.sh  && chmod +x run-rq3-treatment-trajectories-gladel-1.0.sh
    ```
 3. Execute the script (from the directory where the script is downloaded)
     * Linux:
       ```
-      ./run-rq3-gladel-1.0.sh
+      ./run-rq3-treatment-trajectories-gladel-1.0.sh
       ```
 4. The script will run RQ3 and show the output of the code
 5. The result file will be available in a subfolder 'results'
@@ -24,13 +24,13 @@
 ### Gladel 2.0
 
 1. Open a terminal window
-2. Download the 'RQ3' run script:
+2. Download the 'RQ3 treatment trajectories' run script:
    ```
-   curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/RQ3/run-rq3.sh --output run-rq3.sh  && chmod +x run-rq3.sh
+   curl -L https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/LupusNet/RQ3/run-rq3-treatment-trajectories.sh --output run-rq3-treatment-trajectories.sh  && chmod +x run-rq3-treatment-trajectories.sh
    ```
 3. Execute the script (from the directory where the script is downloaded)
    ```
-   ./run-rq3.sh
+   ./run-rq3-treatment-trajectories.sh
    ```
 4. The script will run RQ3 and show the output of the code
 5. The result file will be available in a subfolder 'results'
