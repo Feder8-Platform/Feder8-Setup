@@ -269,6 +269,30 @@ docker compose up -d       # recreate the services on it
 
 If the update changes how notes are processed, also re-run the Step 7 commands.
 
+**If the update instead changes the cohort-answer or evidence-selection logic itself**
+(not your notes, and not the answering model), the `scripts.extract` command above will
+skip everything -- it only re-checks whether your notes, model, or a variable's question
+text changed, not whether the code that computed the stored answer/citation did. To pick
+up a fix like that:
+
+```bash
+# Recompute every cohort answer, e.g. after an upgrade that changes extraction logic:
+docker compose run --rm clinical-api python -m scripts.extract --force
+
+# Or recompute just specific variables (cheaper, no need for full re-extraction):
+docker compose run --rm clinical-api python -m scripts.extract --force-variable is_the_patient_male
+```
+
+Same idea applies to indexing -- if an update changes the embedding model, chunk size, or
+chunking algorithm:
+
+```bash
+docker compose run --rm clinical-api python -m scripts.index --force
+```
+
+No direct database access is needed for any of these -- the release notes for a given
+version will say if a `--force` re-extraction or re-index is recommended.
+
 ## Operating the application
 
 ```bash
