@@ -33,6 +33,11 @@ services:
       - ENABLE_OLLAMA_API=false
       - WEBUI_AUTH=true
       - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
+      # Raised from Open WebUI's default so slow raw-model cohort questions (many
+      # sequential reasoning-enabled calls) don't get cut off mid-stream. Verify this is
+      # still the correct env var / large enough for your Open WebUI version if a raw
+      # cohort request still fails with a transfer/stream error.
+      - AIOHTTP_CLIENT_TIMEOUT=1800
     volumes:
       - open-webui-data:/app/backend/data
     ports:
