@@ -66,7 +66,7 @@ run() { docker compose run "${EVAL_OPTS[@]}" clinical-api "$@"; }
 
 echo "==> Checking application version (need >= 0.2.0)"
 ver="$(docker compose run --rm clinical-api \
-  python -c "import importlib.metadata as m; print(m.version('clinical-notes-processor'))" | tr -d '\r')"
+  python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])" | tr -d '\r')"
 echo "    version: ${ver}"
 case "${ver}" in
   0.0.*|0.1.*)

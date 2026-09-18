@@ -51,7 +51,7 @@ docker compose up -d
 
 ```bash
 docker compose run --rm clinical-api python -c \
-  "import importlib.metadata as m; print(m.version('clinical-notes-processor'))"
+  "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])"
 ```
 
 Compare the printed version against the release you expect.
