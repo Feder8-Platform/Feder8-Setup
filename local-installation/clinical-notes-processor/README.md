@@ -293,6 +293,10 @@ docker compose run --rm clinical-api python -m scripts.index --force
 No direct database access is needed for any of these -- the release notes for a given
 version will say if a `--force` re-extraction or re-index is recommended.
 
+**`./preprocess-data.sh`** runs the full ingest → index → force-extract sequence in one
+command, against your real running application — use it after upgrading to 0.4.0 to apply
+the citation-honesty fix to data extracted under an older version.
+
 ## Operating the application
 
 ```bash
