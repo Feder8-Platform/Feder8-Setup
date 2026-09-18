@@ -5,7 +5,7 @@ name: clinical-notes-processor
 services:
   clinical-api:
     # The published image. Override the version via CLINICAL_IMAGE in .env.
-    image: ${CLINICAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.4.0}
+    image: ${CLINICAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.5.0}
     pull_policy: always
     environment:
       - OLLAMA_HOST=${OLLAMA_HOST}
@@ -15,6 +15,8 @@ services:
       - CLINICAL_RAW_QA_EXTRA_MODELS=${CLINICAL_RAW_QA_EXTRA_MODELS:-}
       - CLINICAL_RAW_QA_CHUNK_CHARS=${CLINICAL_RAW_QA_CHUNK_CHARS:-8000}
       - CLINICAL_RAW_QA_CHUNK_OVERLAP_CHARS=${CLINICAL_RAW_QA_CHUNK_OVERLAP_CHARS:-500}
+      - CLINICAL_CHUNKED_QA_CHUNK_CHARS=${CLINICAL_CHUNKED_QA_CHUNK_CHARS:-16000}
+      - CLINICAL_CHUNKED_QA_CHUNK_OVERLAP_CHARS=${CLINICAL_CHUNKED_QA_CHUNK_OVERLAP_CHARS:-500}
     volumes:
       # Patient notes, mounted read-only. Put one subfolder per patient under this host folder.
       - ${CLINICAL_NOTES_HOST_DIR:-./notes}:/data/notes:ro

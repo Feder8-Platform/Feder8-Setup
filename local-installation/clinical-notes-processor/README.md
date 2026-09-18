@@ -233,6 +233,26 @@ plain language; answers come back with the source passages they are based on.
 
 > Only port **3000** (the web UI) needs to be reachable by users. Port 8000 is the internal API.
 
+### Comparison models
+
+The model dropdown in the web UI lists more than the one production model. All of them answer
+from the same notes; they differ in what safeguards and retrieval strategy they use, so the
+same question can be asked of each to compare:
+
+| Model id | Retrieval | Grounding/schema safeguards | Purpose |
+|---|---|---|---|
+| `clinical-notes-model` | Embedding-based (top-k retrieval) | Yes | Production — the default. |
+| `clinical-notes-model-chunked` | Full-coverage chunking, no vector database | Yes | Does retrieval quality matter, with grounding intact? |
+| `clinical-notes-model-chunked-thinking` | Same as above | Yes | Same as above, with the model's reasoning mode enabled. |
+| `clinical-notes-model-raw` | Full-coverage chunking, no vector database | **None** | Unguarded baseline — what the underlying LLM says with no safeguards at all. |
+
+The `-chunked` variants (always on) and `-raw` (always on; extra raw comparison models are
+opt-in via `CLINICAL_RAW_QA_EXTRA_MODELS` in `.env`) have no cohort SQL fast path: a cohort
+question on any of them runs one LLM call per note chunk per patient, with no cap. For a
+realistic patient count this can be thousands of calls for a single question — expect it to
+be much slower than the production model for "how many patients…" questions. Single-patient
+questions are comparable in cost to production.
+
 ---
 
 ## Validating the install (recommended)
@@ -297,8 +317,8 @@ No direct database access is needed for any of these -- the release notes for a 
 version will say if a `--force` re-extraction or re-index is recommended.
 
 **`./preprocess-data.sh`** runs the full ingest → index → force-extract sequence in one
-command, against your real running application — use it after upgrading to 0.4.0 to apply
-the citation-honesty fix to data extracted under an older version.
+command, against your real running application — run it after an upgrade whose release
+notes call for a re-extraction (see above).
 
 ## Operating the application
 
