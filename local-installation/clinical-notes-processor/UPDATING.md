@@ -5,18 +5,24 @@ version. Run all commands from the `clinical-notes-processor` install folder.
 
 ## 1. Re-download the installation files
 
-This refreshes `docker-compose.yml`, `.env.example`, `README.md`, the eval scripts, and
-`preprocess-data.sh`. It does **not** touch your real `.env` — your secrets/config are
-untouched.
+This refreshes `docker-compose.yml`, `.env.example`, `README.md`, the eval scripts,
+`preprocess-data.sh`, and this file itself (the re-processing table in Step 5 grows with
+each release, so re-fetching it here keeps you on the current version of the table, not
+whatever was current when you first downloaded it). It does **not** touch your real `.env`
+— your secrets/config are untouched.
 
 ```bash
 base="https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/clinical-notes-processor"
 for f in README.md docker-compose.yml .env.example run-evaluation.sh EVALUATION.md \
-         run-loadtest.sh LOAD_TEST.md preprocess-data.sh; do
+         run-loadtest.sh LOAD_TEST.md preprocess-data.sh UPDATING.md; do
   curl -fsSL "$base/$f" -o "$f"
 done
 chmod +x run-evaluation.sh run-loadtest.sh preprocess-data.sh
 ```
+
+(If you're partway through following these steps, finish this run first — updating the file
+under you mid-read is confusing. Just make sure you fetch the latest before your *next*
+update.)
 
 ## 2. `.env` — no changes required for a normal update
 
@@ -56,16 +62,36 @@ docker compose run --rm clinical-api python -c \
 
 Compare the printed version against the release you expect.
 
-## 5. Re-process the notes (ingest -> index -> force-extract, one command)
+## 5. Re-process the notes — only if the release you're upgrading to needs it
+
+`./preprocess-data.sh` (ingest -> index -> force-extract, one command) forces recomputation
+of every cohort variable for every patient — with real patient counts this can be a lot of
+LLM calls and real time. **Only run it if it's actually needed.** `scripts.extract` can only
+tell that your notes, the answering model, or a variable's question text changed — it has
+no way to detect that the extraction/evidence-selection *code* changed, so a release that
+fixes that code silently skips already-extracted data forever unless you force it. Check
+the table below for every version between the one you're currently running and the one
+you're upgrading to (skipping straight past several releases at once means checking all of
+them, not just the newest):
+
+| Version | Re-processing needed? | Why |
+|---|---|---|
+| 0.5.0 | **No** | Adds a new comparison model (`chunked_qa`) and fixes narrative-path/Ollama/Docker bugs — none of it touches indexing, chunking, or the cohort extraction/evidence-selection code. |
+| 0.4.0 | **Yes** | Changed how cohort citations are chosen (citation-honesty fix) — extraction code changed without notes/model/question changing, so `--force` is the only way already-extracted data picks it up. Indexing unaffected (same embedding model/chunking). |
+
+*(Maintainers: add a row here for every future release that changes indexing/chunking or
+the extraction/evidence-selection code, so this table stays the source of truth instead of
+each release re-explaining its own rationale inline.)*
+
+If any version in your upgrade path needs it:
 
 ```bash
 ./preprocess-data.sh
 ```
 
-Heads up: this forces recomputation of every cohort variable for every patient — with real
-patient counts this can be a lot of LLM calls and real time. Worth running during a
-low-usage window. See `README.md`'s "Updating to a new application version" section for
-why `--force` is needed here rather than the plain Step 7 commands.
+Worth running during a low-usage window. See `README.md`'s "Updating to a new application
+version" section for more on `--force`. Running it when it isn't needed is safe, just slow
+— when in doubt, run it.
 
 ## 6. Smoke test
 
