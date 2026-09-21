@@ -25,6 +25,11 @@
 #   - the aggregate "N of M patients <verb>" summary line's numbers and verb only
 # It never captures: patient IDs/names, citation quotes, note filenames, or the raw
 # response body -- those are discarded in-memory and never written to disk or printed.
+#
+# Note on the single-patient question in the default list ("is patient 26 male?"): this is
+# expected to report "could not find a cohort summary line" below, since a single-patient
+# answer isn't a cohort summary and its actual answer is never captured (that would be
+# patient-level content). The "path" line for it is still useful signal on its own.
 
 set -euo pipefail
 
@@ -41,6 +46,9 @@ QUESTIONS=(
   "list the patients where anaemia is no"
   "list the patients where anaemia is not present"
   "list the patients where anaemia is not documented"
+  "how many patients are male"
+  "how many patients are female"
+  "is patient 26 male?"
 )
 
 command -v curl >/dev/null 2>&1 || { echo "ERROR: curl is not installed or not on PATH." >&2; exit 1; }
