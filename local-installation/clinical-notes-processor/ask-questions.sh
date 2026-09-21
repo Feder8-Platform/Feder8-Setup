@@ -42,10 +42,15 @@ OUTFILE="diagnostic-output-$(date +%Y%m%d-%H%M%S).txt"
 # Keep each question free of any patient-identifying content -- it's written to the file
 # verbatim as a label.
 QUESTIONS=(
+  "which patients have anaemia"
+  "how many patients have anaemia"
   "which patients don't have anaemia"
+  "which patients are not anaemic"
   "list the patients where anaemia is no"
   "list the patients where anaemia is not present"
   "list the patients where anaemia is not documented"
+  "which patients are not diagnosed with multiple myeloma"
+  "which patients don't smoke"
   "how many patients are male"
   "how many patients are female"
   "is patient 26 male?"
