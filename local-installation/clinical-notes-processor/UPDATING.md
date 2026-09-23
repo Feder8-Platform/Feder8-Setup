@@ -76,6 +76,7 @@ them, not just the newest):
 
 | Version | Re-processing needed? | Why |
 |---|---|---|
+| 0.6.0 | **Partial — no `--force`, but a plain extract run is required** | Adds two new cohort capabilities (date/duration questions like "surviving longer than 3 years from starting Dara", and specialty-seen questions), backed by 42 brand-new catalogue variables (2 date, 40 specialty) that have never been extracted for any patient. `scripts.extract` already recomputes any variable with no stored row, with no `--force` needed — but it *does* need to actually run once to populate them, or those new question types answer "Not documented"/fall back to narrative for every patient. The existing ~94 variables and their extraction/evidence-selection code are unchanged, so a *forced* re-extraction of them is unnecessary — running the full `./preprocess-data.sh` (which forces everything) is safe but wasteful here. Prefer a plain, non-forced extract: `docker compose run --rm clinical-api python -m scripts.extract` (no `--force`). |
 | 0.5.0 | **No** | Adds a new comparison model (`chunked_qa`) and fixes narrative-path/Ollama/Docker bugs — none of it touches indexing, chunking, or the cohort extraction/evidence-selection code. |
 | 0.4.0 | **Yes** | Changed how cohort citations are chosen (citation-honesty fix) — extraction code changed without notes/model/question changing, so `--force` is the only way already-extracted data picks it up. Indexing unaffected (same embedding model/chunking). |
 
@@ -83,7 +84,7 @@ them, not just the newest):
 the extraction/evidence-selection code, so this table stays the source of truth instead of
 each release re-explaining its own rationale inline.)*
 
-If any version in your upgrade path needs it:
+If any version in your upgrade path needs a **forced** re-extraction (a "Yes" row above):
 
 ```bash
 ./preprocess-data.sh
@@ -93,6 +94,15 @@ Worth running during a low-usage window. See `README.md`'s "Updating to a new ap
 version" section for more on `--force`. Running it when it isn't needed is safe, just slow
 — when in doubt, run it.
 
+If your upgrade path only needs a **plain, non-forced** extract (a "Partial" row above,
+e.g. upgrading to 0.6.0) — new catalogue variables are picked up automatically without
+`--force`, so don't run `preprocess-data.sh` for this alone; it would also force-recompute
+every already-current variable for no benefit:
+
+```bash
+docker compose run --rm clinical-api python -m scripts.extract
+```
+
 ## 6. Smoke test
 
 Ask a few questions you already know the answer to, covering:
@@ -100,5 +110,9 @@ Ask a few questions you already know the answer to, covering:
 - A single-patient lookup
 - A cohort count ("how many patients have X")
 - A negated cohort question ("how many patients don't have X")
+- **If you just upgraded to 0.6.0** (after running the plain extract above): a date/
+  duration question (e.g. "which patients are surviving longer than 3 years from starting
+  Dara"), and a specialty question (e.g. "which specialties were seen for patient X", or
+  "which patients saw a Cardiologist")
 - Anything specifically called out as fixed in the release notes for the version you just
   installed
