@@ -76,6 +76,7 @@ them, not just the newest):
 
 | Version | Re-processing needed? | Why |
 |---|---|---|
+| 0.7.0 | **Yes — full `--force`** | Bundles a real correctness-bug backlog (Issues 002, 019-022, 024-028), two of which changed what gets stored for already-extracted patients: a fix to how "Not documented"/indeterminate judgments store citations (previously could attach a misleading quote from an unrelated sentence, across *all* catalogue variables), and a fix to specialty-seen extraction specifically (both a false-positive fix in the extraction prompt and an evidence-citation fix) that resolved confirmed live false positives (e.g. a specialty answered "Yes" with zero supporting mention in the notes, and two near-duplicate specialty names both firing from one real encounter). Neither is picked up by a plain extract — both need `--force`. Indexing/chunking is unaffected (no `--force` needed on `scripts.index`), so `./preprocess-data.sh` (which also re-runs ingest/index) is safe but you can save time with just: `docker compose run --rm clinical-api python -m scripts.extract --force`. |
 | 0.6.0 | **Partial — no `--force`, but a plain extract run is required** | Adds two new cohort capabilities (date/duration questions like "surviving longer than 3 years from starting Dara", and specialty-seen questions), backed by 42 brand-new catalogue variables (2 date, 40 specialty) that have never been extracted for any patient. `scripts.extract` already recomputes any variable with no stored row, with no `--force` needed — but it *does* need to actually run once to populate them, or those new question types answer "Not documented"/fall back to narrative for every patient. The existing ~94 variables and their extraction/evidence-selection code are unchanged, so a *forced* re-extraction of them is unnecessary — running the full `./preprocess-data.sh` (which forces everything) is safe but wasteful here. Prefer a plain, non-forced extract: `docker compose run --rm clinical-api python -m scripts.extract` (no `--force`). |
 | 0.5.0 | **No** | Adds a new comparison model (`chunked_qa`) and fixes narrative-path/Ollama/Docker bugs — none of it touches indexing, chunking, or the cohort extraction/evidence-selection code. |
 | 0.4.0 | **Yes** | Changed how cohort citations are chosen (citation-honesty fix) — extraction code changed without notes/model/question changing, so `--force` is the only way already-extracted data picks it up. Indexing unaffected (same embedding model/chunking). |
@@ -114,5 +115,10 @@ Ask a few questions you already know the answer to, covering:
   duration question (e.g. "which patients are surviving longer than 3 years from starting
   Dara"), and a specialty question (e.g. "which specialties were seen for patient X", or
   "which patients saw a Cardiologist")
+- **If you just upgraded to 0.7.0** (after the forced re-extraction above): re-check a
+  specialty-seen question you already know the answer to (e.g. "which specialties were
+  seen for patient X") and confirm no specialty appears without a real mention of it
+  anywhere in that patient's notes; also try a "family history of X" question and confirm
+  it doesn't answer from the patient's own diagnosis instead
 - Anything specifically called out as fixed in the release notes for the version you just
   installed
