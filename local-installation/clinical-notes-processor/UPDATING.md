@@ -76,6 +76,7 @@ them, not just the newest):
 
 | Version | Re-processing needed? | Why |
 |---|---|---|
+| 0.8.0 | **Partial — no `--force`, but a plain extract run is required** | Adds a brand-new `specialty_encounters` table (specialty + date, with source quote) populated by its own extraction pass, independent of the existing `seen_by_*` booleans — built because those booleans have no date attached and can't answer questions like "which specialties were seen after Dara start". No stored row exists for any patient yet, so a plain `docker compose run --rm clinical-api python -m scripts.extract` (no `--force`) picks it up automatically — same pattern as 0.6.0's new variables below. Also adds an optional new script, `scripts.import_external_variables` (see `IMPORTING_EXTERNAL_VARIABLES.md`), for importing an authoritative external value (e.g. `dara_start_date`) in place of an unreliable LLM extraction — nothing to run unless you want that capability. |
 | 0.7.0 | **Yes — full `--force`** | Bundles a real correctness-bug backlog (Issues 002, 019-022, 024-028), two of which changed what gets stored for already-extracted patients: a fix to how "Not documented"/indeterminate judgments store citations (previously could attach a misleading quote from an unrelated sentence, across *all* catalogue variables), and a fix to specialty-seen extraction specifically (both a false-positive fix in the extraction prompt and an evidence-citation fix) that resolved confirmed live false positives (e.g. a specialty answered "Yes" with zero supporting mention in the notes, and two near-duplicate specialty names both firing from one real encounter). Neither is picked up by a plain extract — both need `--force`. Indexing/chunking is unaffected (no `--force` needed on `scripts.index`), so `./preprocess-data.sh` (which also re-runs ingest/index) is safe but you can save time with just: `docker compose run --rm clinical-api python -m scripts.extract --force`. |
 | 0.6.0 | **Partial — no `--force`, but a plain extract run is required** | Adds two new cohort capabilities (date/duration questions like "surviving longer than 3 years from starting Dara", and specialty-seen questions), backed by 42 brand-new catalogue variables (2 date, 40 specialty) that have never been extracted for any patient. `scripts.extract` already recomputes any variable with no stored row, with no `--force` needed — but it *does* need to actually run once to populate them, or those new question types answer "Not documented"/fall back to narrative for every patient. The existing ~94 variables and their extraction/evidence-selection code are unchanged, so a *forced* re-extraction of them is unnecessary — running the full `./preprocess-data.sh` (which forces everything) is safe but wasteful here. Prefer a plain, non-forced extract: `docker compose run --rm clinical-api python -m scripts.extract` (no `--force`). |
 | 0.5.0 | **No** | Adds a new comparison model (`chunked_qa`) and fixes narrative-path/Ollama/Docker bugs — none of it touches indexing, chunking, or the cohort extraction/evidence-selection code. |
@@ -96,9 +97,9 @@ version" section for more on `--force`. Running it when it isn't needed is safe,
 — when in doubt, run it.
 
 If your upgrade path only needs a **plain, non-forced** extract (a "Partial" row above,
-e.g. upgrading to 0.6.0) — new catalogue variables are picked up automatically without
-`--force`, so don't run `preprocess-data.sh` for this alone; it would also force-recompute
-every already-current variable for no benefit:
+e.g. upgrading to 0.6.0 or 0.8.0) — new catalogue variables/tables are picked up
+automatically without `--force`, so don't run `preprocess-data.sh` for this alone; it
+would also force-recompute every already-current variable for no benefit:
 
 ```bash
 docker compose run --rm clinical-api python -m scripts.extract
@@ -120,5 +121,11 @@ Ask a few questions you already know the answer to, covering:
   seen for patient X") and confirm no specialty appears without a real mention of it
   anywhere in that patient's notes; also try a "family history of X" question and confirm
   it doesn't answer from the patient's own diagnosis instead
+- **If you just upgraded to 0.8.0** (after running the plain extract above): query
+  `specialty_encounters` directly for a patient you know has documented encounters (see
+  `EXTRACTION.md`'s cookbook-style examples) and confirm it returns real rows with source
+  quotes; if you plan to use `scripts.import_external_variables`, try importing a small
+  test CSV and confirm rejected rows are reported, not silently imported (see
+  `IMPORTING_EXTERNAL_VARIABLES.md`)
 - Anything specifically called out as fixed in the release notes for the version you just
   installed
