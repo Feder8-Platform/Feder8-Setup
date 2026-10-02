@@ -57,7 +57,7 @@
     },
     { "name": "distributed-analytics-r-server",
       "image": "distributed-analytics",
-      "tag":  "r-server-2.0.5",
+      "tag":  "r-server-2.1.0",
       "public": false
     },
     { "name": "distributed-analytics-remote",
