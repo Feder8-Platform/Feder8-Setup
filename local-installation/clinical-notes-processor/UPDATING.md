@@ -76,6 +76,7 @@ them, not just the newest):
 
 | Version | Re-processing needed? | Why |
 |---|---|---|
+| 0.8.2 | **Yes — specialty dates only: `--force-specialty-dates`** | Fixes the specialty-encounter extraction (the `specialty_encounters` table behind questions like "which specialties were seen after Dara start"): rows from 0.8.0/0.8.1 were mostly false positives — quotes that never mention the specialty (e.g. "telephone consultation" recorded as a psychiatrist visit), referrals and planned appointments, and lab results. A plain extract does **not** redo them (the app can't tell that the extraction code changed), so force just that table: first, optionally, measure the old rows with `docker compose run --rm clinical-api python -m scripts.audit_specialty_quote_support --out /data/registry/csv_export/specialty_quote_support.csv`, then run `docker compose run --rm clinical-api python -m scripts.extract --force-specialty-dates` (no full `--force`: the other variables and the search index are unaffected). The extraction is also much faster on large notes. |
 | 0.8.1 | **No** | Adds `scripts.audit_specialty_regex_vs_extraction` (a new, optional accuracy-check script), per-patient/per-chunk progress logging for the specialty extraction, and a `--help` formatting fix — none of it touches indexing, chunking, or the extraction/evidence-selection code. |
 | 0.8.0 | **Partial — no `--force`, but a plain extract run is required** | Adds a brand-new `specialty_encounters` table (specialty + date, with source quote) populated by its own extraction pass, independent of the existing `seen_by_*` booleans — built because those booleans have no date attached and can't answer questions like "which specialties were seen after Dara start". No stored row exists for any patient yet, so a plain `docker compose run --rm clinical-api python -m scripts.extract` (no `--force`) picks it up automatically — same pattern as 0.6.0's new variables below. Also adds an optional new script, `scripts.import_external_variables` (see `IMPORTING_EXTERNAL_VARIABLES.md`), for importing an authoritative external value (e.g. `dara_start_date`) in place of an unreliable LLM extraction — nothing to run unless you want that capability. |
 | 0.7.0 | **Yes — full `--force`** | Bundles a real correctness-bug backlog (Issues 002, 019-022, 024-028), two of which changed what gets stored for already-extracted patients: a fix to how "Not documented"/indeterminate judgments store citations (previously could attach a misleading quote from an unrelated sentence, across *all* catalogue variables), and a fix to specialty-seen extraction specifically (both a false-positive fix in the extraction prompt and an evidence-citation fix) that resolved confirmed live false positives (e.g. a specialty answered "Yes" with zero supporting mention in the notes, and two near-duplicate specialty names both firing from one real encounter). Neither is picked up by a plain extract — both need `--force`. Indexing/chunking is unaffected (no `--force` needed on `scripts.index`), so `./preprocess-data.sh` (which also re-runs ingest/index) is safe but you can save time with just: `docker compose run --rm clinical-api python -m scripts.extract --force`. |
@@ -133,5 +134,12 @@ Ask a few questions you already know the answer to, covering:
   collapsed into one paragraph); if you're running specialty-date extraction on a real
   corpus, confirm you now see per-patient/per-chunk progress lines in the logs instead of
   silence until the whole run finishes
+- **If you just upgraded to 0.8.2**: after the `--force-specialty-dates` run above, spot-check
+  a few rows of the `specialty_encounters` table (e.g. via `scripts.export_csv`): each
+  `source_quote` should name the specialty and describe a visit that actually happened. To
+  copy the export out, use
+  `docker compose cp clinical-api:/data/registry/csv_export/. ./csv_export` — the trailing
+  `/.` matters: without it, every export after the first is copied into
+  `./csv_export/csv_export/` and the CSVs in `./csv_export` look stale
 - Anything specifically called out as fixed in the release notes for the version you just
   installed

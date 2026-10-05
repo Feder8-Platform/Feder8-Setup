@@ -52,7 +52,7 @@ fi
 # `docker compose up`, which keeps the default in docker-compose.yml / your .env. Leave
 # CLINICAL_IMAGE commented in .env so production stays on the stable release. Override the
 # candidate with:  EVAL_IMAGE=... ./run-evaluation.sh
-export CLINICAL_IMAGE="${EVAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.8.1}"
+export CLINICAL_IMAGE="${EVAL_IMAGE:-harbor.honeur.org/honeur/clinical-notes-processor:0.8.2}"
 
 # These options redirect every path the tools use into the isolated scratch volume,
 # so production notes (read-only) and the production registry are left untouched.
