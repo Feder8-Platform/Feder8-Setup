@@ -73,6 +73,12 @@ what you want the first time you bring up specialty-encounter-date extraction on
 corpus that was indexed before that feature existed — the table is empty until this
 (or `--force`) runs.
 
+If a call to the model fails for a patient (for example, Ollama restarts mid-run), that
+patient's existing rows are kept, a `FAILED` line is logged for it, the run carries on
+with the other patients, and the command exits with a non-zero status
+(`specialty_encounters_failed` in the final summary counts them). Run
+`scripts.extract` again (no flag needed) to redo only those patients.
+
 ### `--exhaustive-specialty-scan`
 
 Disables the specialty pre-filter for the specialty-date extraction pass. By
