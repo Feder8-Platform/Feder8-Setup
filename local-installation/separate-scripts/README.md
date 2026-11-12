@@ -15,6 +15,7 @@ Table of Contents
     * [Update custom concepts](#update-custom-concepts)
   * [Backup and restore](#backup-and-restore)
   * [Vocabulary update](#vocabulary-update)
+  * [Rotate OMOP CDM schema](#rotate-omop-cdm-schema)
   * [Custom concepts update](#custom-concepts-update)
 
 ## Requirements
@@ -298,6 +299,29 @@ Windows
 ```
 .\start-vocabulary-update.cmd
 ```
+
+## Rotate OMOP CDM schema
+Archives the current `omopcdm` schema and starts from a fresh, empty one before loading a new data release.
+The script will:
+* rename the existing `omopcdm` schema to `omopcdm_<source_release_date>` (date from the `cdm_source` table, format YYYYMMDD)
+* create a new `omopcdm` schema with the same CDM version (5.3.1 or 5.4), owned by `ohdsi_admin` and readable by `ohdsi_app`
+* add the base primary keys, base constraints and base indexes
+* load the vocabulary in the new `omopcdm` schema (via `start-vocabulary-update.sh`)
+
+After the script has finished, the new `omopcdm` schema only contains the vocabulary. Run your ETL again to load your data.
+
+Installation steps (Linux/MacOS only):
+1.	Open a terminal window and go to the folder where you normally run the Feder8 scripts (the folder containing `info_feder8_installation`)
+2.	Download the script and the vocabulary update script it uses
+```
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/rotate-omopcdm-schema.sh --output rotate-omopcdm-schema.sh && chmod +x rotate-omopcdm-schema.sh
+curl -fsSL https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/separate-scripts/start-vocabulary-update.sh --output start-vocabulary-update.sh && chmod +x start-vocabulary-update.sh
+```
+3.	Run the script
+```
+./rotate-omopcdm-schema.sh
+```
+4.	When the vocabulary update asks *"In which schema you want to apply the pipeline?"*, enter `omopcdm` (or press Enter if `omopcdm` is shown as default)
 
 ## Custom concepts update
 When new custom concepts become available, they can be loaded in the OMOP CDM database.
