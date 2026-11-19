@@ -14,6 +14,11 @@
 #
 # REGISTRY and REPOSITORY can be overridden for other therapeutic areas, e.g.
 #   REGISTRY=harbor.lupusnet.org REPOSITORY=lupus ./rotate-omopcdm-schema.sh
+#
+# The script checks there is enough free disk space before changing anything
+# (3x the current vocabulary size, at least MIN_FREE_GB). To force a specific
+# requirement, set REQUIRED_FREE_GB, e.g.
+#   REQUIRED_FREE_GB=50 ./rotate-omopcdm-schema.sh
 set -euo pipefail
 
 REGISTRY=${REGISTRY:-harbor.honeur.org}
@@ -22,6 +27,8 @@ CDM_SCHEMA=omopcdm
 FEDER8_ADMIN_USERNAME=feder8_admin
 OWNER_ROLE=ohdsi_admin
 READ_ROLE=ohdsi_app
+MIN_FREE_GB=${MIN_FREE_GB:-20}
+VOCABULARY_TABLES="'concept','concept_relationship','concept_ancestor','concept_synonym','concept_class','domain','drug_strength','relationship','vocabulary'"
 
 INIT_SCHEMA_IMAGE=$REGISTRY/$REPOSITORY/postgres-omopcdm-initialize-schema:2.0.3
 BASE_PK_IMAGE=$REGISTRY/$REPOSITORY/postgres-omopcdm-add-base-primary-keys:2.0.3
@@ -57,6 +64,84 @@ run_pipeline_image() {
         "$image"
 }
 
+# Free space in KB on the file system holding the given path (empty if unknown)
+free_kb() {
+    df -Pk "$1" 2>/dev/null | awk 'NR == 2 { print $4 }' || true
+}
+
+# Host folder where Docker stores its data (images, containers, volumes).
+# On macOS/Windows Docker Desktop this is a virtual disk file that grows on the host disk.
+docker_data_dir() {
+    local dir
+    if [[ "$(uname -s)" == "Darwin" ]]; then
+        dir="$HOME/Library/Containers/com.docker.docker/Data"
+        [[ -d "$dir" ]] && { echo "$dir"; return; }
+        echo "$HOME"
+        return
+    fi
+    dir=$(docker info --format '{{.DockerRootDir}}' 2>/dev/null || true)
+    if [[ -n "$dir" ]] && [[ -n "$(free_kb "$dir")" ]]; then
+        echo "$dir"
+    else
+        echo "/"
+    fi
+}
+
+check_free_disk_space() {
+    local vocab_bytes vocab_gb required_gb host_dir host_free_kb container_free_kb free_kb_min free_gb
+
+    if [[ "${REQUIRED_FREE_GB:-}" == "0" ]]; then
+        echo "Skipping free disk space check (REQUIRED_FREE_GB=0)."
+        return
+    fi
+
+    vocab_bytes=$(query "SELECT coalesce(sum(pg_total_relation_size(c.oid)), 0)
+                         FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace
+                         WHERE n.nspname = '$CDM_SCHEMA' AND c.relkind IN ('r', 'p')
+                           AND c.relname IN ($VOCABULARY_TABLES)")
+    vocab_gb=$(( (vocab_bytes + 1024**3 - 1) / 1024**3 ))
+
+    if [[ -n "${REQUIRED_FREE_GB:-}" ]]; then
+        required_gb=$REQUIRED_FREE_GB
+    else
+        required_gb=$(( vocab_gb * 3 ))
+        (( required_gb < MIN_FREE_GB )) && required_gb=$MIN_FREE_GB
+    fi
+
+    # Host disk (where Docker's data lives)
+    host_dir=$(docker_data_dir)
+    host_free_kb=$(free_kb "$host_dir")
+    # Disk as seen by postgres inside Docker (limited by the Docker Desktop disk size)
+    container_free_kb=$(docker exec postgres sh -c 'df -Pk "${PGDATA:-/var/lib/postgresql/data}"' 2>/dev/null \
+        | awk 'NR == 2 { print $4 }' || true)
+
+    [[ -n "$host_free_kb" || -n "$container_free_kb" ]] \
+        || fail "Could not determine the free disk space. Set REQUIRED_FREE_GB=0 to skip this check."
+
+    free_kb_min=${host_free_kb:-$container_free_kb}
+    if [[ -n "$container_free_kb" ]] && (( container_free_kb < free_kb_min )); then
+        free_kb_min=$container_free_kb
+    fi
+    free_gb=$(( free_kb_min / 1024 / 1024 ))
+
+    echo "Disk space: current vocabulary ${vocab_gb} GB, required free ${required_gb} GB, available ${free_gb} GB"
+    [[ -n "$host_free_kb" ]] && echo "  - host ($host_dir): $(( host_free_kb / 1024 / 1024 )) GB free"
+    [[ -n "$container_free_kb" ]] && echo "  - postgres container: $(( container_free_kb / 1024 / 1024 )) GB free"
+
+    if (( free_gb < required_gb )); then
+        cat >&2 <<EOF
+
+ERROR: not enough free disk space. At least ${required_gb} GB is needed, ${free_gb} GB is available.
+The archived schema keeps its data and a new vocabulary is loaded next to it, so the
+database will grow by roughly the size of the vocabulary plus temporary space during the load.
+
+Free up disk space and run this script again. Nothing was changed.
+On Docker Desktop, also check the disk size limit in Settings > Resources.
+EOF
+        exit 1
+    fi
+}
+
 # ---------------------------------------------------------------------------
 # Pre-checks
 # ---------------------------------------------------------------------------
@@ -87,6 +172,8 @@ if [[ "$(query "SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE tab
 else
     CDM_VERSION=5.3.1
 fi
+
+check_free_disk_space
 
 # ---------------------------------------------------------------------------
 # Confirmation
