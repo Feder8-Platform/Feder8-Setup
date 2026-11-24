@@ -111,6 +111,10 @@ ollama_info("model details", "/api/show", {"model": MODEL}, _details)
 ollama_info("model digest", "/api/tags", None, _digest)
 
 con = sqlite3.connect(f"file:{DB}?mode=ro", uri=True)
+tables = {r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE type = 'table'")}
+if "notes" not in tables:
+    print("\nNo notes in the database yet (run scripts.ingest first); nothing to report.")
+    sys.exit(0)
 notes = con.execute("SELECT patient_id, text FROM notes").fetchall()
 patients = sorted({p for p, _ in notes})
 chars_by_patient = dict.fromkeys(patients, 0)
@@ -167,9 +171,19 @@ else:
 
 # ---- 3. Extraction output -------------------------------------------------------------
 section("3. Extraction output (specialist visits)")
-enc = con.execute(
-    "SELECT patient_id, specialty, date_documented, date_iso, model FROM specialty_encounters"
-).fetchall()
+has_visits = {"specialty_encounters", "specialty_encounters_meta"} <= tables
+if not has_visits:
+    print(
+        "no specialist-visit extraction in this database yet "
+        "(run scripts.extract --force-specialty-dates); sections 3 and 4 are empty"
+    )
+enc = (
+    con.execute(
+        "SELECT patient_id, specialty, date_documented, date_iso, model FROM specialty_encounters"
+    ).fetchall()
+    if has_visits
+    else []
+)
 counts = dict.fromkeys(patients, 0)
 for row in enc:
     counts[row[0]] = counts.get(row[0], 0) + 1
@@ -184,9 +198,13 @@ if enc:
     print(f"visits without a date: {len(enc) - iso - written_only}")
     print(f"distinct specialties with >= 1 visit: {len({r[1] for r in enc})}")
     print(f"model per row: {sorted({(r[4], sum(1 for x in enc if x[4] == r[4])) for r in enc})}")
-meta = con.execute(
-    "SELECT patient_id, extracted_at FROM specialty_encounters_meta ORDER BY extracted_at"
-).fetchall()
+meta = (
+    con.execute(
+        "SELECT patient_id, extracted_at FROM specialty_encounters_meta ORDER BY extracted_at"
+    ).fetchall()
+    if has_visits
+    else []
+)
 print(f"patients with a completed visit extraction: {len(meta)} of {len(patients)}")
 
 
