@@ -135,15 +135,18 @@ git required:
 mkdir clinical-notes-processor && cd clinical-notes-processor
 base="https://raw.githubusercontent.com/Feder8-Platform/Feder8-Setup/main/local-installation/clinical-notes-processor"
 for f in README.md docker-compose.yml .env.example run-evaluation.sh EVALUATION.md \
-         run-loadtest.sh LOAD_TEST.md preprocess-data.sh UPDATING.md; do
+         run-loadtest.sh LOAD_TEST.md preprocess-data.sh UPDATING.md EXTRACTION.md \
+         run-statistics.sh run_statistics.py; do
   curl -fsSL "$base/$f" -o "$f"
 done
-chmod +x run-evaluation.sh run-loadtest.sh preprocess-data.sh
+chmod +x run-evaluation.sh run-loadtest.sh preprocess-data.sh run-statistics.sh
 ```
 
 This folder contains `docker-compose.yml`, `.env.example`, the evaluation tools
 (`run-evaluation.sh`, `EVALUATION.md`, `run-loadtest.sh`, `LOAD_TEST.md`), `preprocess-data.sh`
-(ingest/index/extract your notes), and `UPDATING.md` (how to update to a new version) —
+(ingest/index/extract your notes), `EXTRACTION.md` (extraction options), `run-statistics.sh` +
+`run_statistics.py` (counts-only run statistics, see EXTRACTION.md), and `UPDATING.md` (how to
+update to a new version) —
 everything needed to run and validate the application. No application source code is required.
 
 ## Step 4 — Add the patient notes
